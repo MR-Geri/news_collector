@@ -78,6 +78,7 @@ class LocalBot:
             self.send_message(event.user_id, 'Меню!')
         elif event.text.lower() == 'тест':
             self.post_post('../image_post/post_1')
+            self.send_message(event.user_id, 'Пост добавлен!')
 
     def start(self) -> None:
         try:
@@ -91,10 +92,7 @@ class LocalBot:
             time.sleep(10)
         except vk_api.AuthError as error_msg:
             logger.exception('Auth')
-            print('ERROR:', error_msg)
-        # except Exception as e:
-        #     print(f'Получена ошибка: {e}\n')
-        #     time.sleep(10)
+            print('Auth ERROR:', error_msg)
 
 
 logger = logging.getLogger(__name__)
