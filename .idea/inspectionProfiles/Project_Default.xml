@@ -1,0 +1,48 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <Languages>
+        <language minSize="139" name="Python" />
+      </Languages>
+    </inspection_tool>
+    <inspection_tool class="PyChainedComparisonsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoreConstantInTheMiddle" value="true" />
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="W605" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N802" />
+          <option value="N806" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="PyQt5.uic" />
+          <option value="PyQt5.QtCore.pyqtBoundSignal.connect" />
+          <option value="object.pixmap" />
+          <option value="object.accept" />
+          <option value="object.pos" />
+          <option value="object.button" />
+          <option value="object.buttons" />
+          <option value="object.*" />
+          <option value="PyQt5.QtWidgets.window.resize" />
+          <option value="PyQt5.QtWidgets.window.close" />
+          <option value="PyQt5.QtWidgets.menuBar.addAction" />
+          <option value="Code.info_panel.Panel.update" />
+          <option value="Code.info_panel.Panel.render" />
+          <option value="dict.entities_sector" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
