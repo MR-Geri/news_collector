@@ -9,9 +9,9 @@ from vk_bot.settings import *
 import requests
 import vk_api
 from vk_api.longpoll import VkEventType
-from parser_posts.parser import parse_habr
+from parser_posts.parser import Habr
 
-from vk_bot.polls import MyVkLongPoll, MyVkBotLongPoll
+from vk_bot.polls import MyVkLongPoll
 
 
 class LocalBot:
@@ -24,6 +24,8 @@ class LocalBot:
         self.post = self.post_session.get_api()
         self.data = None
         self.long = MyVkLongPoll(self.vk_session)
+        #
+        self.habr = Habr()
 
     def upload_image(self, path_file: str = '', url: str = None) -> None:
         upload_url = self.post.photos.getWallUploadServer(group_id=os.getenv('ID_GROUP'))['upload_url']
@@ -106,31 +108,27 @@ class LocalBot:
             self.send_message(user_id=event.user_id, message='Привет, я бот-информатор)')
         elif event.text.lower() == 'меню':
             self.send_message(event.user_id, 'Меню!')
-        elif 'запость номер' in event.text.lower():
-            flag = self.post_post(f'../posts/post_{event.text.lower().split()[-1]}')
-            if flag:
-                self.send_message(event.user_id, 'Пост добавлен!')
-            else:
-                self.send_message(event.user_id, 'Не удалось опубликовать пост.')
         elif 'запость всё' in event.text.lower() or 'запость все' in event.text.lower():
             with open('../posts/all.json', 'r', encoding='utf-8') as all_file_r:
                 all_ = json.load(all_file_r)
+                # ХАБР
                 habr_all = all_['habr']
                 for i in range(habr_all['count'] + 1):
                     if i not in habr_all['post_id']:
-                        flag = self.post_post(f'../posts/post_{i}')
+                        flag = self.post_post(f'../posts/habr/post_{i}')
                         if flag:
                             self.send_message(event.user_id, 'Пост добавлен!')
                             habr_all['post_id'].append(i)
                         else:
                             self.send_message(event.user_id, f'Не удалось опубликовать пост {i}.')
+                #
                 with open('../posts/all.json', 'w', encoding='utf-8') as all_file_w:
                     json.dump(all_, all_file_w)
                 self.send_message(event.user_id, f"Посты добавлены.")
         elif event.text.lower() == 'покажи последние новости':
             self.send_post(event.user_id, 10)
         elif event.text.lower() == 'парси habr':
-            parse_habr()
+            self.habr.parse()
             self.send_message(event.user_id, 'Habr пропарсен.')
 
     def start(self) -> None:
