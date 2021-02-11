@@ -1,7 +1,8 @@
 import datetime
+import os
+
 import requests
 from bs4 import BeautifulSoup
-from multiprocessing import Process
 import json
 
 URL = 'https://habr.com/ru/news/'
@@ -15,80 +16,62 @@ def get_html(url, params=None):
         print('ERROR')
 
 
-def get_content(html):
+def create_post_habr(html):
     soup = BeautifulSoup(html, 'html.parser')
     items = soup.find_all('li', class_='content-list__item_post')
-    data = []
-    for i in items:
-        try:
-            data.append({
-                'name': i.find('h2', class_='post__title').get_text(strip=True),
-                'url': i.find('h2', class_='post__title').find('a').get('href')
-            })
-        except:
-            pass
-    return data
+    with open('../posts/all.json', encoding='utf-8') as all_:
+        all_post = json.load(all_)
+        for ind, i in enumerate(items):
+            try:
+                title = i.find('h2', class_='post__title')
+                text = i.find('div', class_='post__text')
+                id_ = title.find('a').get('href').split('/')[-2]
+                url = title.find('a').get('href')
+                img_soup = BeautifulSoup(
+                    get_html(url).text, 'html.parser'
+                )
+                all_img = img_soup.find('div', class_='post__wrapper').find_all('img')
+                #
+                if id_ not in all_post['habr']['data']:
+                    os.mkdir(f"../posts/post_{all_post['habr']['count'] + 1}")
+                    with open(
+                            f"../posts/post_{all_post['habr']['count'] + 1}/text.txt", 'w', encoding='utf-8'
+                    ) as file_text:
+                        with open(
+                                f"../posts/post_{all_post['habr']['count'] + 1}/image.txt", 'w', encoding='utf-8'
+                        ) as file_images:
+                            file_text.write(
+                                f'{title.get_text(strip=True)}\n\n{text.get_text()}\n\nОригинальная статья: \n{url}'
+                            )
+                            all_post['habr']['data'].append(id_)
+                            for img in all_img:
+                                if 'https://' in img.get('src'):
+                                    file_images.write(img.get('src') + '\n')
+                            all_post['habr']['count'] += 1
+            except Exception as e:
+                print(ind, e)
+    with open('../posts/all.json', 'w', encoding='utf-8') as all_:
+        json.dump(all_post, all_)
 
 
-def get_page(html):
+def get_page_habr(html):
     soup = BeautifulSoup(html, 'html.parser')
     block = soup.find('ul', class_='toggle-menu toggle-menu_pagination')
     return int(block.find_all('li', class_='toggle-menu__item toggle-menu__item_pagination')[-2].get_text())
 
 
-def multiprocess(beginning, end):
-    data = []
-    for num in range(beginning, end):
-        data.extend(get_content(get_html(URL, params={'p': num}).text))
-    try:
-        d = json.load(open('data.json'))
-    except:
-        d = []
-        print('Была ошибка в считывании информации')
-    d.extend(data)
-    try:
-        with open("data.json", "w") as write_file:
-            json.dump(d, write_file)
-    except:
-        print('Была ошибка в записи информации')
-
-
-def parse_process(process=5):
-    html = get_html(URL)
+def parse_habr():
+    html = get_html('https://habr.com/ru/news/')
     if html.status_code == 200:
-        pages = get_page(html.text)
-        data_process = []
-        last = 0
-        print(f'Начало {process} парсинга')
-        for num in range(1, pages, process):
-            data_process.append(Process(target=multiprocess, args=(num, num + process)))
-            last = num
-        if pages % process != 0:
-            data_process.append(Process(target=multiprocess, args=(last, pages + 1)))
-        for i in data_process:
-            i.start()
-        for i in data_process:
-            i.join()
-        print(f'Конец {process} парсинга')
-    else:
-        print(f'{html.status_code} ERROR')
-
-
-def parse():
-    html = get_html(URL)
-    if html.status_code == 200:
-        pages = get_page(html.text)
-        data_set = []
+        pages = get_page_habr(html.text)
         for num in range(1, pages + 1):
             print(f'Парсинг {num} страницы из {pages}...')
-            data_set.extend(get_content(get_html(URL, params={'p': num}).text))
-        with open('data.json', 'w') as file:
-            json.dump(data_set, file)
+            create_post_habr(get_html(f'https://habr.com/ru/news/page{num}/').text)
     else:
         print(f'{html.status_code} ERROR')
 
 
 if __name__ == '__main__':
     date = datetime.datetime.now()
-    parse()
+    parse_habr()
     print(datetime.datetime.now() - date)

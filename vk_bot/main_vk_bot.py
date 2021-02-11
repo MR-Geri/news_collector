@@ -1,3 +1,4 @@
+import json
 import logging
 import os
 import random
@@ -8,6 +9,7 @@ from vk_bot.settings import *
 import requests
 import vk_api
 from vk_api.longpoll import VkEventType
+from parser_posts.parser import parse_habr
 
 from vk_bot.polls import MyVkLongPoll, MyVkBotLongPoll
 
@@ -23,9 +25,15 @@ class LocalBot:
         self.data = None
         self.long = MyVkLongPoll(self.vk_session)
 
-    def upload_image(self, path_file: str) -> None:
+    def upload_image(self, path_file: str = '', url: str = None) -> None:
         upload_url = self.post.photos.getWallUploadServer(group_id=os.getenv('ID_GROUP'))['upload_url']
-        request = requests.post(upload_url, files={'photo': open(path_file, 'rb')})
+        if not url:
+            photo = open(path_file, 'rb')
+        else:
+            with open(path_file + url.split('/')[-1], 'wb') as file:
+                file.write(requests.post(url).content)
+            photo = open(path_file + url.split('/')[-1], 'rb')
+        request = requests.post(upload_url, files={'photo': photo})
         params = {'server': request.json()['server'],
                   'photo': request.json()['photo'],
                   'hash': request.json()['hash'],
@@ -37,18 +45,31 @@ class LocalBot:
             message = ''  # {datetime.datetime.now().strftime("%H:%M:%S")}
             photos = ''
             try:
-                with open(path + '/text.txt', encoding='utf-8') as file:
-                    message = file.read()
+                with open(path + '/text.txt', encoding='utf-8') as file_message:
+                    message = file_message.read()
             except FileNotFoundError:
                 pass
             try:
-                for file in os.listdir(path):
-                    if file.split('.')[-1] in IMAGE_EXTENSION:
-                        self.upload_image(path + '/' + file)
+                images = None
+                with open(path + '/image.txt', encoding='utf-8') as file_images:
+                    url_images = file_images.readlines()
+            except FileNotFoundError:
+                images = os.listdir(path)
+                url_images = None
+            if images:
+                for img in images:
+                    if img.split('.')[-1] in IMAGE_EXTENSION:
+                        self.upload_image(path + '/' + img)
                         photo_id = self.data[0]['id']
                         photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
-            except Exception as e:
-                print(e)
+            elif url_images:
+                for url in url_images:
+                    url = url.rstrip()
+                    if url.split('.')[-1] in IMAGE_EXTENSION:
+                        self.upload_image(path_file=path + '/', url=url)
+                        photo_id = self.data[0]['id']
+                        photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
+                        os.remove(path + '/' + url.split('/')[-1])
             if message == photos == '':
                 return False
             params = {
@@ -86,13 +107,31 @@ class LocalBot:
         elif event.text.lower() == 'меню':
             self.send_message(event.user_id, 'Меню!')
         elif 'запость номер' in event.text.lower():
-            flag = self.post_post(f'../image_post/post_{event.text.split("запость номер ")[-1]}')
+            flag = self.post_post(f'../posts/post_{event.text.lower().split()[-1]}')
             if flag:
                 self.send_message(event.user_id, 'Пост добавлен!')
             else:
                 self.send_message(event.user_id, 'Не удалось опубликовать пост.')
+        elif 'запость всё' in event.text.lower() or 'запость все' in event.text.lower():
+            with open('../posts/all.json', 'r', encoding='utf-8') as all_file_r:
+                all_ = json.load(all_file_r)
+                habr_all = all_['habr']
+                for i in range(habr_all['count'] + 1):
+                    if i not in habr_all['post_id']:
+                        flag = self.post_post(f'../posts/post_{i}')
+                        if flag:
+                            self.send_message(event.user_id, 'Пост добавлен!')
+                            habr_all['post_id'].append(i)
+                        else:
+                            self.send_message(event.user_id, f'Не удалось опубликовать пост {i}.')
+                with open('../posts/all.json', 'w', encoding='utf-8') as all_file_w:
+                    json.dump(all_, all_file_w)
+                self.send_message(event.user_id, f"Посты добавлены.")
         elif event.text.lower() == 'покажи последние новости':
             self.send_post(event.user_id, 10)
+        elif event.text.lower() == 'парси habr':
+            parse_habr()
+            self.send_message(event.user_id, 'Habr пропарсен.')
 
     def start(self) -> None:
         try:

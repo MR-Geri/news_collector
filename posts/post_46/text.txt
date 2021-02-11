@@ -1,0 +1,8 @@
+Google, Microsoft, Huawei, Mozilla и AWS основали Rust Foundation
+
+
+Развитием языка программирования Rust займется некоммерческая организация Rust Foundation. Новый фонд создали AWS, Huawei, Google, Microsoft и Mozilla. Уже сформирован бюджет на два года работы фонда, он составит миллион долларов.
+
+
+Оригинальная статья: 
+https://habr.com/ru/news/t/541600/
