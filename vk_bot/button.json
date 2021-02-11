@@ -14,7 +14,7 @@
       {
         "action": {
           "type": "text",
-          "label": "тест"
+          "label": "Покажи последние новости"
         },
         "color": "primary"
       }

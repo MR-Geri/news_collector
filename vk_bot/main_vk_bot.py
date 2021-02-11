@@ -32,7 +32,7 @@ class LocalBot:
                   'group_id': os.getenv('ID_GROUP')}
         self.data = self.post.photos.saveWallPhoto(**params)
 
-    def post_post(self, path: str) -> None:
+    def post_post(self, path: str) -> bool:
         if os.path.exists(path):
             message = ''  # {datetime.datetime.now().strftime("%H:%M:%S")}
             photos = ''
@@ -50,22 +50,31 @@ class LocalBot:
             except Exception as e:
                 print(e)
             if message == photos == '':
-                print(f'Не получилось вывести пост: {path}')
-            else:
-                params = {
-                    'message': message,
-                    'owner_id': '-' + os.getenv('ID_GROUP'),
-                    'from_group': '1',
-                    'attachments': photos[:-1]
-                }
-                self.post.wall.post(**params)
+                return False
+            params = {
+                'message': message,
+                'owner_id': '-' + os.getenv('ID_GROUP'),
+                'from_group': '1',
+                'attachments': photos[:-1]
+            }
+            self.post.wall.post(**params)
+            return True
 
-    def send_message(self, user_id, message) -> None:
+    def send_post(self, user_id: int, count: int) -> None:
+        params = {
+            'owner_id': '-' + os.getenv('ID_GROUP'),
+            'count': count
+        }
+        posts = self.post.wall.get(**params)['items'][:count]
+        for post in posts:
+            self.send_message(user_id, '', f"wall-{os.getenv('ID_GROUP')}_{post['id']}")
+
+    def send_message(self, user_id, message, attachment: str = '') -> None:
         path = r'button.json'
         while True:
             try:
                 self.vk.messages.send(user_id=user_id, random_id=random.getrandbits(32), message=message,
-                                      keyboard=open(path, "r", encoding="UTF-8").read())
+                                      attachment=attachment, keyboard=open(path, "r", encoding="UTF-8").read())
                 break
             except Exception as e:
                 print(e)
@@ -73,11 +82,17 @@ class LocalBot:
 
     def commands(self, event) -> None:
         if event.text.lower() == 'помощь' or event.text.lower() == 'help' or event.text.lower() == 'начать':
-            self.send_message(user_id=event.user_id, message='Приветики, я бот-информатор)')
+            self.send_message(user_id=event.user_id, message='Привет, я бот-информатор)')
         elif event.text.lower() == 'меню':
             self.send_message(event.user_id, 'Меню!')
-        elif event.text.lower() == 'тест':
-            self.post_post('../image_post/post_1')
+        elif 'запость номер' in event.text.lower():
+            flag = self.post_post(f'../image_post/post_{event.text.split("запость номер ")[-1]}')
+            if flag:
+                self.send_message(event.user_id, 'Пост добавлен!')
+            else:
+                self.send_message(event.user_id, 'Не удалось опубликовать пост.')
+        elif event.text.lower() == 'покажи последние новости':
+            self.send_post(event.user_id, 10)
 
     def start(self) -> None:
         try:
@@ -91,10 +106,7 @@ class LocalBot:
             time.sleep(10)
         except vk_api.AuthError as error_msg:
             logger.exception('Auth')
-            print('ERROR:', error_msg)
-        # except Exception as e:
-        #     print(f'Получена ошибка: {e}\n')
-        #     time.sleep(10)
+            print('Auth ERROR:', error_msg)
 
 
 logger = logging.getLogger(__name__)
