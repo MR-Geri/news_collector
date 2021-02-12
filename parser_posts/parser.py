@@ -84,40 +84,41 @@ class ThreeNews:
         else:
             print(f'{self.html.status_code} ERROR')
 
-    @staticmethod
-    def create_posts(html) -> None:
+    def create_posts(self, html) -> None:
         soup = BeautifulSoup(html, 'html.parser')
-        items = soup.find_all('li', class_='content-list__item_post')
+        items = soup.find_all('div', class_='article-entry article-infeed marker_allfeed nImp0 nIcat9 cat_9 nIaft')
         with open('../posts/all.json', encoding='utf-8') as all_:
             all_post = json.load(all_)
             for ind, i in enumerate(items):
                 try:
-                    title = i.find('h2', class_='post__title')
+                    title = i.find('a', class_='entry-header')
                     text = i.find('div', class_='post__text')
-                    id_ = title.find('a').get('href').split('/')[-2]
-                    url = title.find('a').get('href')
+                    id_ = i.find('div', class_='cntPrevWrapper').find('a').get('name')
+                    url = self.url + '/'.join(title.get('href').split('/')[:-1])
                     img_soup = BeautifulSoup(
                         get_html(url).text, 'html.parser'
                     )
                     all_img = img_soup.find('div', class_='post__wrapper').find_all('img')
                     #
-                    if id_ not in all_post['habr']['data']:
-                        os.mkdir(f"../posts/habr/post_{all_post['habr']['count'] + 1}")
+                    if id_ not in all_post['3dnews']['data']:
+                        os.mkdir(f"../posts/3dnews/post_{all_post['3dnews']['count'] + 1}")
                         with open(
-                                f"../posts/habr/post_{all_post['habr']['count'] + 1}/text.txt", 'w', encoding='utf-8'
+                                f"../posts/3dnews/post_{all_post['3dnews']['count'] + 1}/text.txt",
+                                'w', encoding='utf-8'
                         ) as file_text:
                             with open(
-                                    f"../posts/habr/post_{all_post['habr']['count'] + 1}/image.txt", 'w',
+                                    f"../posts/3dnews/post_{all_post['3dnews']['count'] + 1}/image.txt", 'w',
                                     encoding='utf-8'
                             ) as file_images:
                                 file_text.write(
                                     f'{title.get_text(strip=True)}\n\n{text.get_text()}\n\nОригинальная статья: \n{url}'
                                 )
-                                all_post['habr']['data'].append(id_)
+                                all_post['3dnews']['data'].append(id_)
                                 for img in all_img:
                                     if 'https://' in img.get('src'):
                                         file_images.write(img.get('src') + '\n')
-                                all_post['habr']['count'] += 1
+                                all_post['3dnews']['count'] += 1
+                        break
                     else:
                         break
                 except Exception as e:
@@ -127,5 +128,5 @@ class ThreeNews:
 
 
 if __name__ == '__main__':
-    par = Habr()
+    par = ThreeNews()
     par.parse()
