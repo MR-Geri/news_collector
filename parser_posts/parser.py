@@ -22,7 +22,7 @@ class Habr:
             pages = self.get_page()
             for num in range(1, pages + 1):
                 print(f'habr парсинг {num} страницы из {pages}...')
-                self.create_posts(get_html(f'{self.url}/page{num}/').text)
+                self.create_posts(get_html(f'{self.url}page{num}/').text)
         else:
             print(f'{self.html.status_code} ERROR')
 
@@ -124,3 +124,8 @@ class ThreeNews:
                     print(ind, e)
         with open('../posts/all.json', 'w', encoding='utf-8') as all_:
             json.dump(all_post, all_)
+
+
+if __name__ == '__main__':
+    par = Habr()
+    par.parse()

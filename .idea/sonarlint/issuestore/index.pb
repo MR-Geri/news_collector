@@ -20,7 +20,5 @@ D
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 B
 vk_bot/settings.py,0\5\0512f8814837f3cb67277cc53365d0c014996933
-J
-image_post/post_1/text.txt,6\d\6dff433577a541c692711ec86995dc298215f528
 E
 vk_bot/main_vk_bot.py,e\3\e380e104ae7f437f95b46ea9e05c03261590ecc9
