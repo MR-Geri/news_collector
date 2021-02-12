@@ -9,7 +9,7 @@ from vk_bot.settings import *
 import requests
 import vk_api
 from vk_api.longpoll import VkEventType
-from parser_posts.parser import Habr
+from parser_posts.parser import Habr, ThreeNews
 
 from vk_bot.polls import MyVkLongPoll
 
@@ -26,6 +26,7 @@ class LocalBot:
         self.long = MyVkLongPoll(self.vk_session)
         #
         self.habr = Habr()
+        self.three_d_news = ThreeNews()
 
     def upload_image(self, path_file: str = '', url: str = None) -> None:
         upload_url = self.post.photos.getWallUploadServer(group_id=os.getenv('ID_GROUP'))['upload_url']
@@ -33,7 +34,7 @@ class LocalBot:
             photo = open(path_file, 'rb')
         else:
             with open(path_file + url.split('/')[-1], 'wb') as file:
-                file.write(requests.post(url).content)
+                file.write(requests.get(url).content)
             photo = open(path_file + url.split('/')[-1], 'rb')
         request = requests.post(upload_url, files={'photo': photo})
         params = {'server': request.json()['server'],
@@ -121,7 +122,16 @@ class LocalBot:
                             habr_all['post_id'].append(i)
                         else:
                             self.send_message(event.user_id, f'Не удалось опубликовать пост {i}.')
-                #
+                # 3dNews
+                three_d_news = all_['3dnews']
+                for i in range(three_d_news['count'] + 1):
+                    if i not in three_d_news['post_id']:
+                        flag = self.post_post(f'../posts/3dnews/post_{i}')
+                        if flag:
+                            self.send_message(event.user_id, 'Пост добавлен!')
+                            three_d_news['post_id'].append(i)
+                        else:
+                            self.send_message(event.user_id, f'Не удалось опубликовать пост {i}.')
                 with open('../posts/all.json', 'w', encoding='utf-8') as all_file_w:
                     json.dump(all_, all_file_w)
                 self.send_message(event.user_id, f"Посты добавлены.")
