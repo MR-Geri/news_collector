@@ -14,6 +14,11 @@ from parser_posts.parser import Habr, ThreeNews
 from vk_bot.polls import MyVkLongPoll
 
 
+def thread(func) -> None:
+    main = Thread(target=func)
+    main.start()
+
+
 class LocalBot:
     def __init__(self) -> None:
         self.token = os.getenv('TOKEN')
@@ -27,6 +32,10 @@ class LocalBot:
         #
         self.habr = Habr()
         self.three_d_news = ThreeNews()
+        #
+        self.parse()
+        self.push_post()
+        self.time_update = time.time()
 
     def upload_image(self, path_file: str = '', url: str = None) -> None:
         upload_url = self.post.photos.getWallUploadServer(group_id=os.getenv('ID_GROUP'))['upload_url']
@@ -109,45 +118,63 @@ class LocalBot:
             self.send_message(user_id=event.user_id, message='Привет, я бот-информатор)')
         elif event.text.lower() == 'меню':
             self.send_message(event.user_id, 'Меню!')
-        elif 'запость всё' in event.text.lower() or 'запость все' in event.text.lower():
-            with open('../posts/all.json', 'r', encoding='utf-8') as all_file_r:
-                all_ = json.load(all_file_r)
-                # ХАБР
-                habr_all = all_['habr']
-                for i in range(habr_all['count'] + 1):
-                    if i not in habr_all['post_id']:
-                        flag = self.post_post(f'../posts/habr/post_{i}')
-                        if flag:
-                            self.send_message(event.user_id, 'Пост добавлен!')
-                            habr_all['post_id'].append(i)
-                        else:
-                            self.send_message(event.user_id, f'Не удалось опубликовать пост {i}.')
-                # 3dNews
-                three_d_news = all_['3dnews']
-                for i in range(three_d_news['count'] + 1):
-                    if i not in three_d_news['post_id']:
-                        flag = self.post_post(f'../posts/3dnews/post_{i}')
-                        if flag:
-                            self.send_message(event.user_id, 'Пост добавлен!')
-                            three_d_news['post_id'].append(i)
-                        else:
-                            self.send_message(event.user_id, f'Не удалось опубликовать пост {i}.')
-                #
-                with open('../posts/all.json', 'w', encoding='utf-8') as all_file_w:
-                    json.dump(all_, all_file_w)
-                self.send_message(event.user_id, f"Посты добавлены.")
+        elif 'запость всё' in event.text.lower() or 'запость все' in event.text.lower() and event.user_id == MY_ID:
+            thread(self.push_post())
         elif event.text.lower() == 'покажи последние новости':
             self.send_post(event.user_id, 10)
-        elif event.text.lower() == 'парси habr':
-            self.habr.parse()
-            self.send_message(event.user_id, 'Habr пропарсен.')
-        elif event.text.lower() == 'парси 3dnews':
-            self.three_d_news.parse()
-            self.send_message(event.user_id, '3dnews пропарсен.')
+        elif event.text.lower() == 'парси' and event.user_id == MY_ID:
+            self.parse()
+            self.send_message(event.user_id, 'Делаю!')
+
+    def push_post(self) -> None:
+        with open('../posts/all.json', 'r', encoding='utf-8') as all_file_r:
+            all_ = json.load(all_file_r)
+            # ХАБР
+            habr = all_['habr']
+            for i in habr['data']:
+                if i not in habr['post_id']:
+                    try:
+                        flag = self.post_post(f'../posts/habr/post_{i}')
+                    except Exception as e:
+                        print(e)
+                        flag = False
+                    if flag:
+                        self.send_message(MY_ID, 'Пост добавлен!')
+                        habr['post_id'].append(i)
+                    else:
+                        self.send_message(MY_ID, f'Не удалось опубликовать пост {i}.')
+            # 3dNews
+            three_d_news = all_['3dnews']
+            for i in three_d_news['data']:
+                if i not in three_d_news['post_id']:
+                    try:
+                        flag = self.post_post(f'../posts/3dnews/post_{i}')
+                    except Exception as e:
+                        print(e)
+                        flag = False
+                    if flag:
+                        self.send_message(MY_ID, 'Пост добавлен!')
+                        three_d_news['post_id'].append(i)
+                    else:
+                        self.send_message(MY_ID, f'Не удалось опубликовать пост {i}.')
+            #
+            with open('../posts/all.json', 'w', encoding='utf-8') as all_file_w:
+                json.dump(all_, all_file_w)
+            self.send_message(MY_ID, f"Посты добавлены.")
+
+    def parse(self) -> None:
+        thread(self.habr.parse)
+        thread(self.three_d_news.parse)
 
     def start(self) -> None:
         try:
             while True:
+                real_time = time.time()
+                if real_time - self.time_update > TIME_UPDATE_MINUTES * 60:
+                    print('Update posts')
+                    self.time_update = real_time
+                    self.push_post()
+                    self.parse()
                 for event in self.long.listen():
                     if event.type == VkEventType.MESSAGE_NEW and event.to_me:
                         if event.from_user:  # Если написали в ЛС
