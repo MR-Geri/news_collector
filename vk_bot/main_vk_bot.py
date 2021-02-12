@@ -132,6 +132,7 @@ class LocalBot:
                             three_d_news['post_id'].append(i)
                         else:
                             self.send_message(event.user_id, f'Не удалось опубликовать пост {i}.')
+                #
                 with open('../posts/all.json', 'w', encoding='utf-8') as all_file_w:
                     json.dump(all_, all_file_w)
                 self.send_message(event.user_id, f"Посты добавлены.")
@@ -140,6 +141,9 @@ class LocalBot:
         elif event.text.lower() == 'парси habr':
             self.habr.parse()
             self.send_message(event.user_id, 'Habr пропарсен.')
+        elif event.text.lower() == 'парси 3dnews':
+            self.three_d_news.parse()
+            self.send_message(event.user_id, '3dnews пропарсен.')
 
     def start(self) -> None:
         try:
