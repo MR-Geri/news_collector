@@ -1,8 +1,11 @@
 import os
+import time
 
 import requests
 from bs4 import BeautifulSoup
 import json
+
+from vk_bot.settings import TIME_UPDATE_MINUTES
 
 
 def get_html(url, params=None):
@@ -123,6 +126,14 @@ class ThreeNews:
             json.dump(all_post, all_)
 
 
+def main_parser():
+    habr = Habr()
+    three_d_news = ThreeNews()
+    while True:
+        habr.parse()
+        three_d_news.parse()
+        time.sleep(TIME_UPDATE_MINUTES * 60)
+
+
 if __name__ == '__main__':
-    par = ThreeNews()
-    par.parse()
+    main_parser()

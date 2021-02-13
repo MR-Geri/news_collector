@@ -9,14 +9,9 @@ from vk_bot.settings import *
 import requests
 import vk_api
 from vk_api.longpoll import VkEventType
-from parser_posts.parser import Habr, ThreeNews
+from parser_posts.parser import Habr, ThreeNews, main_parser
 
 from vk_bot.polls import MyVkLongPoll
-
-
-def thread(func) -> None:
-    main = Thread(target=func)
-    main.start()
 
 
 class LocalBot:
@@ -33,8 +28,6 @@ class LocalBot:
         self.habr = Habr()
         self.three_d_news = ThreeNews()
         #
-        self.parse()
-        self.push_post()
         self.time_update = time.time()
 
     def upload_image(self, path_file: str = '', url: str = None) -> None:
@@ -119,7 +112,7 @@ class LocalBot:
         elif event.text.lower() == 'меню':
             self.send_message(event.user_id, 'Меню!')
         elif 'запость всё' in event.text.lower() or 'запость все' in event.text.lower() and event.user_id == MY_ID:
-            thread(self.push_post())
+            self.push_post()
         elif event.text.lower() == 'покажи последние новости':
             self.send_post(event.user_id, 10)
         elif event.text.lower() == 'парси' and event.user_id == MY_ID:
@@ -163,8 +156,8 @@ class LocalBot:
             self.send_message(MY_ID, f"Посты добавлены.")
 
     def parse(self) -> None:
-        thread(self.habr.parse)
-        thread(self.three_d_news.parse)
+        self.habr.parse()
+        self.three_d_news.parse()
 
     def start(self) -> None:
         try:
@@ -174,7 +167,6 @@ class LocalBot:
                     print('Update posts')
                     self.time_update = real_time
                     self.push_post()
-                    self.parse()
                 for event in self.long.listen():
                     if event.type == VkEventType.MESSAGE_NEW and event.to_me:
                         if event.from_user:  # Если написали в ЛС
@@ -198,7 +190,9 @@ bot = LocalBot()
 
 def vk() -> None:
     b_l = Thread(target=bot.start)
+    parser = Thread(target=main_parser)
     b_l.start()
+    parser.start()
 
 
 if __name__ == '__main__':
