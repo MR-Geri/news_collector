@@ -9,7 +9,7 @@ from vk_bot.settings import *
 import requests
 import vk_api
 from vk_api.longpoll import VkEventType
-from parser_posts.parser import Habr, ThreeNews, main_parser
+from parser_posts.parser import Habr, ThreeNews
 
 from vk_bot.polls import MyVkLongPoll
 
@@ -162,11 +162,6 @@ class LocalBot:
     def start(self) -> None:
         try:
             while True:
-                real_time = time.time()
-                if real_time - self.time_update > TIME_UPDATE_MINUTES * 60:
-                    print('Update posts')
-                    self.time_update = real_time
-                    self.push_post()
                 for event in self.long.listen():
                     if event.type == VkEventType.MESSAGE_NEW and event.to_me:
                         if event.from_user:  # Если написали в ЛС
@@ -188,9 +183,16 @@ logger.addHandler(f_handler)
 bot = LocalBot()
 
 
+def check():
+    while True:
+        bot.parse()
+        bot.push_post()
+        time.sleep(TIME_UPDATE_MINUTES * 60)
+
+
 def vk() -> None:
     b_l = Thread(target=bot.start)
-    parser = Thread(target=main_parser)
+    parser = Thread(target=check)
     b_l.start()
     parser.start()
 

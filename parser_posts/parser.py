@@ -126,14 +126,8 @@ class ThreeNews:
             json.dump(all_post, all_)
 
 
-def main_parser():
+if __name__ == '__main__':
     habr = Habr()
     three_d_news = ThreeNews()
-    while True:
-        habr.parse()
-        three_d_news.parse()
-        time.sleep(TIME_UPDATE_MINUTES * 60)
-
-
-if __name__ == '__main__':
-    main_parser()
+    habr.parse()
+    three_d_news.parse()
