@@ -9,7 +9,7 @@ from vk_bot.settings import *
 import requests
 import vk_api
 from vk_api.longpoll import VkEventType
-from parser_posts.parser import Habr
+from parser_posts.parser import Habr, ThreeNews
 
 from vk_bot.polls import MyVkLongPoll
 
@@ -26,6 +26,9 @@ class LocalBot:
         self.long = MyVkLongPoll(self.vk_session)
         #
         self.habr = Habr()
+        self.three_d_news = ThreeNews()
+        #
+        self.time_update = time.time()
 
     def upload_image(self, path_file: str = '', url: str = None) -> None:
         upload_url = self.post.photos.getWallUploadServer(group_id=os.getenv('ID_GROUP'))['upload_url']
@@ -33,7 +36,7 @@ class LocalBot:
             photo = open(path_file, 'rb')
         else:
             with open(path_file + url.split('/')[-1], 'wb') as file:
-                file.write(requests.post(url).content)
+                file.write(requests.get(url).content)
             photo = open(path_file + url.split('/')[-1], 'rb')
         request = requests.post(upload_url, files={'photo': photo})
         params = {'server': request.json()['server'],
@@ -108,28 +111,53 @@ class LocalBot:
             self.send_message(user_id=event.user_id, message='Привет, я бот-информатор)')
         elif event.text.lower() == 'меню':
             self.send_message(event.user_id, 'Меню!')
-        elif 'запость всё' in event.text.lower() or 'запость все' in event.text.lower():
-            with open('../posts/all.json', 'r', encoding='utf-8') as all_file_r:
-                all_ = json.load(all_file_r)
-                # ХАБР
-                habr_all = all_['habr']
-                for i in range(habr_all['count'] + 1):
-                    if i not in habr_all['post_id']:
-                        flag = self.post_post(f'../posts/habr/post_{i}')
-                        if flag:
-                            self.send_message(event.user_id, 'Пост добавлен!')
-                            habr_all['post_id'].append(i)
-                        else:
-                            self.send_message(event.user_id, f'Не удалось опубликовать пост {i}.')
-                #
-                with open('../posts/all.json', 'w', encoding='utf-8') as all_file_w:
-                    json.dump(all_, all_file_w)
-                self.send_message(event.user_id, f"Посты добавлены.")
+        elif 'запость всё' in event.text.lower() or 'запость все' in event.text.lower() and event.user_id == MY_ID:
+            self.push_post()
         elif event.text.lower() == 'покажи последние новости':
             self.send_post(event.user_id, 10)
-        elif event.text.lower() == 'парси habr':
-            self.habr.parse()
-            self.send_message(event.user_id, 'Habr пропарсен.')
+        elif event.text.lower() == 'парси' and event.user_id == MY_ID:
+            self.parse()
+            self.send_message(event.user_id, 'Делаю!')
+
+    def push_post(self) -> None:
+        with open('../posts/all.json', 'r', encoding='utf-8') as all_file_r:
+            all_ = json.load(all_file_r)
+            # ХАБР
+            habr = all_['habr']
+            for i in habr['data']:
+                if i not in habr['post_id']:
+                    try:
+                        flag = self.post_post(f'../posts/habr/post_{i}')
+                    except Exception as e:
+                        print(e)
+                        flag = False
+                    if flag:
+                        self.send_message(MY_ID, 'Пост добавлен!')
+                        habr['post_id'].append(i)
+                    else:
+                        self.send_message(MY_ID, f'Не удалось опубликовать пост {i}.')
+            # 3dNews
+            three_d_news = all_['3dnews']
+            for i in three_d_news['data']:
+                if i not in three_d_news['post_id']:
+                    try:
+                        flag = self.post_post(f'../posts/3dnews/post_{i}')
+                    except Exception as e:
+                        print(e)
+                        flag = False
+                    if flag:
+                        self.send_message(MY_ID, 'Пост добавлен!')
+                        three_d_news['post_id'].append(i)
+                    else:
+                        self.send_message(MY_ID, f'Не удалось опубликовать пост {i}.')
+            #
+            with open('../posts/all.json', 'w', encoding='utf-8') as all_file_w:
+                json.dump(all_, all_file_w)
+            self.send_message(MY_ID, f"Посты добавлены.")
+
+    def parse(self) -> None:
+        self.habr.parse()
+        self.three_d_news.parse()
 
     def start(self) -> None:
         try:
@@ -155,9 +183,18 @@ logger.addHandler(f_handler)
 bot = LocalBot()
 
 
+def check():
+    while True:
+        bot.parse()
+        bot.push_post()
+        time.sleep(TIME_UPDATE_MINUTES * 60)
+
+
 def vk() -> None:
     b_l = Thread(target=bot.start)
+    parser = Thread(target=check)
     b_l.start()
+    parser.start()
 
 
 if __name__ == '__main__':

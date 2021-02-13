@@ -1,0 +1,6 @@
+Futuremark представила тест технологии сетчатых шейдеров 3DMark Mesh Shader
+
+Графический API DirectX 12 Ultimate принёс ряд новых продвинутых технологий вроде DirectX Raytracing 1.1, Sampler Feedback или Variable Rate Shading (VRS). Также была представлена технология сетчатых шейдеров или Mesh Shaders. Теперь Futuremark представила тест для 3DMark для оценки преимуществ сетчатых шейдеров.
+
+Оригинальная статья: 
+https://3dnews.ru/news/1032481

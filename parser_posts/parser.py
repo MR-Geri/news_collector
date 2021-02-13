@@ -1,8 +1,11 @@
 import os
+import time
 
 import requests
 from bs4 import BeautifulSoup
 import json
+
+from vk_bot.settings import TIME_UPDATE_MINUTES
 
 
 def get_html(url, params=None):
@@ -40,21 +43,21 @@ class Habr:
             for ind, i in enumerate(items):
                 try:
                     title = i.find('h2', class_='post__title')
-                    text = i.find('div', class_='post__text')
                     id_ = title.find('a').get('href').split('/')[-2]
-                    url = title.find('a').get('href')
-                    img_soup = BeautifulSoup(
-                        get_html(url).text, 'html.parser'
-                    )
-                    all_img = img_soup.find('div', class_='post__wrapper').find_all('img')
-                    #
                     if id_ not in all_post['habr']['data']:
-                        os.mkdir(f"../posts/habr/post_{all_post['habr']['count'] + 1}")
+                        text = i.find('div', class_='post__text')
+                        url = title.find('a').get('href')
+                        img_soup = BeautifulSoup(
+                            get_html(url).text, 'html.parser'
+                        )
+                        all_img = img_soup.find('div', class_='post__wrapper').find_all('img')
+                        #
+                        os.mkdir(f"../posts/habr/post_{id_}")
                         with open(
-                                f"../posts/habr/post_{all_post['habr']['count'] + 1}/text.txt", 'w', encoding='utf-8'
+                                f"../posts/habr/post_{id_}/text.txt", 'w', encoding='utf-8'
                         ) as file_text:
                             with open(
-                                    f"../posts/habr/post_{all_post['habr']['count'] + 1}/image.txt", 'w',
+                                    f"../posts/habr/post_{id_}/image.txt", 'w',
                                     encoding='utf-8'
                             ) as file_images:
                                 file_text.write(
@@ -64,7 +67,6 @@ class Habr:
                                 for img in all_img:
                                     if 'https://' in img.get('src'):
                                         file_images.write(img.get('src') + '\n')
-                                all_post['habr']['count'] += 1
                     else:
                         break
                 except Exception as e:
@@ -80,34 +82,35 @@ class ThreeNews:
 
     def parse(self) -> None:
         if self.html.status_code == 200:
-            self.create_posts(get_html(f'{self.url}').text)
+            for i in range(1, 2):
+                self.create_posts(get_html(f'{self.url}/page-{i}.html').text)
         else:
             print(f'{self.html.status_code} ERROR')
 
     def create_posts(self, html) -> None:
         soup = BeautifulSoup(html, 'html.parser')
-        items = soup.find_all('div', class_='article-entry article-infeed marker_allfeed nImp0 nIcat9 cat_9 nIaft')
+        items = soup.find_all('div', class_='article-entry')
         with open('../posts/all.json', encoding='utf-8') as all_:
             all_post = json.load(all_)
             for ind, i in enumerate(items):
                 try:
-                    title = i.find('a', class_='entry-header')
-                    text = i.find('div', class_='post__text')
                     id_ = i.find('div', class_='cntPrevWrapper').find('a').get('name')
-                    url = self.url + '/'.join(title.get('href').split('/')[:-1])
-                    img_soup = BeautifulSoup(
-                        get_html(url).text, 'html.parser'
-                    )
-                    all_img = img_soup.find('div', class_='post__wrapper').find_all('img')
-                    #
                     if id_ not in all_post['3dnews']['data']:
-                        os.mkdir(f"../posts/3dnews/post_{all_post['3dnews']['count'] + 1}")
+                        title = i.find('a', class_='entry-header')
+                        text = i.find('p')
+                        url = self.url + '/'.join(title.get('href').split('/')[:-1])
+                        img_soup = BeautifulSoup(
+                            get_html(url).text, 'html.parser'
+                        )
+                        all_img = img_soup.find('div', class_='js-mediator-article').find_all('img')
+                        #
+                        os.mkdir(f"../posts/3dnews/post_{id_}")
                         with open(
-                                f"../posts/3dnews/post_{all_post['3dnews']['count'] + 1}/text.txt",
+                                f"../posts/3dnews/post_{id_}/text.txt",
                                 'w', encoding='utf-8'
                         ) as file_text:
                             with open(
-                                    f"../posts/3dnews/post_{all_post['3dnews']['count'] + 1}/image.txt", 'w',
+                                    f"../posts/3dnews/post_{id_}/image.txt", 'w',
                                     encoding='utf-8'
                             ) as file_images:
                                 file_text.write(
@@ -117,10 +120,6 @@ class ThreeNews:
                                 for img in all_img:
                                     if 'https://' in img.get('src'):
                                         file_images.write(img.get('src') + '\n')
-                                all_post['3dnews']['count'] += 1
-                        break
-                    else:
-                        break
                 except Exception as e:
                     print(ind, e)
         with open('../posts/all.json', 'w', encoding='utf-8') as all_:
@@ -128,5 +127,7 @@ class ThreeNews:
 
 
 if __name__ == '__main__':
-    par = ThreeNews()
-    par.parse()
+    habr = Habr()
+    three_d_news = ThreeNews()
+    habr.parse()
+    three_d_news.parse()

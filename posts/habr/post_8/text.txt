@@ -1,8 +1,0 @@
-Обновление Android Jetpack: Activity Result API и рефакторинг Fragment
-
-
-Привет! С вами Android Broadcast. Прошли 2 недели и очередной релиз библиотек Jetpack от Google уже с нами. Вышло долгожданное исправление множества багов в Fragment из-за рефакторинга внутри FragmentManager, Activity Result API и много другого. Все самое интересное вы найдете в статье, а все подробности можете найти на сайте
-
-
-Оригинальная статья: 
-https://habr.com/ru/news/t/541942/
