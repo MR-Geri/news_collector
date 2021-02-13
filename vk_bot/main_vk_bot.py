@@ -153,7 +153,6 @@ class LocalBot:
             #
             with open('../posts/all.json', 'w', encoding='utf-8') as all_file_w:
                 json.dump(all_, all_file_w)
-            self.send_message(MY_ID, f"Посты добавлены.")
 
     def parse(self) -> None:
         self.habr.parse()
