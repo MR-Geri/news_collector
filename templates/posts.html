@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-	<meta charset="UTF-8">
-	<title>Статьи</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block title %}
+Все статьи на сайте
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<h1>Все статьи</h1>
+		{% for el in articles %}
+			<div class="alert alert-info">
+				<h2>{{ el.title }}</h2>
+				<p>{{ el.intro }}</p>
+				<p>{{ el.date }}</p>
+				<a href="/posts/{{ el.id }}" class="btn btn-warning">Детальнее</a>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}
