@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="posts" uuid="315dccbf-4c99-4c04-b10a-4b0b29d346bf">
+    <data-source source="LOCAL" name="posts" uuid="421120ef-a0fe-4001-9c00-03df511b1193">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:D:\PycharmProjects\web_project\posts.sqlite</jdbc-url>
+      <jdbc-url>jdbc:sqlite:D:\PycharmProjects\web_project\posts.db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>
           <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.31.1/sqlite-jdbc-3.31.1.jar</url>
