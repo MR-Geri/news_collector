@@ -1,5 +1,7 @@
 import os
 import time
+from datetime import datetime
+
 from utils_base import *
 import requests
 from bs4 import BeautifulSoup
@@ -43,13 +45,25 @@ class Habr:
                     title = i.find('h2', class_='post__title')
                     id_ = title.find('a').get('href').split('/')[-2]
                     if id_ not in get_id():
-                        text = i.find('div', class_='post__text')
+                        intro = i.find('div', class_='post__text')
                         url = title.find('a').get('href')
-                        img_soup = BeautifulSoup(
+                        post_soup = BeautifulSoup(
                             get_html(url).text, 'html.parser'
                         )
-                        all_img = img_soup.find('div', class_='post__wrapper').find_all('img')
+                        all_img = post_soup.find('div', class_='post__wrapper').find_all('img')
+                        text = post_soup.find('div', class_='post__text').get_text(strip=True)
+                        date = datetime(post_soup.find('span', class_='post__time').get('data-time_published'))
                         #
+                        with get_base('../posts.db', True) as base:
+                            _get = """INSERT INTO article (id, title, intro, text, date, flag, url)
+                                                VALUES((SELECT id FROM article  ORDER BY id DESC LIMIT 1) + 1,
+                                                ?, ?, ?, ?, ?, ?)"""
+                            base.execute(_get, (
+                                title.get_text(strip=True),
+                                intro.get_text(),
+                                text,
+                                date
+                            ))
                         os.mkdir(f"../posts/habr/post_{id_}")
                         with open(
                                 f"../posts/habr/post_{id_}/text.txt", 'w', encoding='utf-8'
@@ -59,7 +73,8 @@ class Habr:
                                     encoding='utf-8'
                             ) as file_images:
                                 file_text.write(
-                                    f'{title.get_text(strip=True)}\n\n{text.get_text()}\n\nОригинальная статья: \n{url}'
+                                    f'{title.get_text(strip=True)}\n\n{intro.get_text()}\n\nОригинальная статья:'
+                                    f' \n{url}'
                                 )
                                 all_post['habr']['data'].append(id_)
                                 for img in all_img:
