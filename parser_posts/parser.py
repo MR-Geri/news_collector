@@ -50,9 +50,14 @@ class Habr:
                         post_soup = BeautifulSoup(
                             get_html(url).text, 'html.parser'
                         )
-                        all_img = post_soup.find('div', class_='post__wrapper').find_all('img')
+                        all_img = []
+                        for img in post_soup.find('div', class_='post__wrapper').find_all('img'):
+                            if 'https://' in img.get('src'):
+                                all_img.append(img.get('src'))
                         text = post_soup.find('div', class_='post__text').get_text(strip=True)
-                        date = datetime(post_soup.find('span', class_='post__time').get('data-time_published'))
+                        # 2021-02-14T13:11Z
+                        date = post_soup.find('span', class_='post__time').get('data-time_published').split('T')
+                        date = datetime(*date[0].split('-'), *date[1][:-1].split(':')) + datetime(hour=3)
                         #
                         with get_base('../posts.db', True) as base:
                             _get = """INSERT INTO article (id, title, intro, text, date, flag, url)
@@ -62,24 +67,10 @@ class Habr:
                                 title.get_text(strip=True),
                                 intro.get_text(),
                                 text,
-                                date
+                                date,
+                                True,
+                                '\n'.join(all_img)
                             ))
-                        os.mkdir(f"../posts/habr/post_{id_}")
-                        with open(
-                                f"../posts/habr/post_{id_}/text.txt", 'w', encoding='utf-8'
-                        ) as file_text:
-                            with open(
-                                    f"../posts/habr/post_{id_}/image.txt", 'w',
-                                    encoding='utf-8'
-                            ) as file_images:
-                                file_text.write(
-                                    f'{title.get_text(strip=True)}\n\n{intro.get_text()}\n\nОригинальная статья:'
-                                    f' \n{url}'
-                                )
-                                all_post['habr']['data'].append(id_)
-                                for img in all_img:
-                                    if 'https://' in img.get('src'):
-                                        file_images.write(img.get('src') + '\n')
                     else:
                         break
                 except Exception as e:
@@ -110,13 +101,31 @@ class ThreeNews:
                     id_ = i.find('div', class_='cntPrevWrapper').find('a').get('name')
                     if id_ not in all_post['3dnews']['data']:
                         title = i.find('a', class_='entry-header')
-                        text = i.find('p')
+                        intro = i.find('p')
                         url = self.url + '/'.join(title.get('href').split('/')[:-1])
-                        img_soup = BeautifulSoup(
+                        post_soup = BeautifulSoup(
                             get_html(url).text, 'html.parser'
                         )
-                        all_img = img_soup.find('div', class_='js-mediator-article').find_all('img')
+                        text = post_soup.find('div', class_='js-mediator-article').get_text(strip=True)
+                        # 2021-02-14T14:45:00+03:00
+                        date = post_soup.find('span', class_='entry-date').get('content')
+                        all_img = []
+                        for img in post_soup.find('div', class_='js-mediator-article').find_all('img'):
+                            if 'https://' in img.get('src'):
+                                all_img.append(img.get('src'))
                         #
+                        with get_base('../posts.db', True) as base:
+                            _get = """INSERT INTO article (id, title, intro, text, date, flag, url)
+                                                VALUES((SELECT id FROM article  ORDER BY id DESC LIMIT 1) + 1,
+                                                ?, ?, ?, ?, ?, ?)"""
+                            base.execute(_get, (
+                                title.get_text(strip=True),
+                                intro.get_text(),
+                                text,
+                                date,
+                                True,
+                                '\n'.join(all_img)
+                            ))
                         os.mkdir(f"../posts/3dnews/post_{id_}")
                         with open(
                                 f"../posts/3dnews/post_{id_}/text.txt",
