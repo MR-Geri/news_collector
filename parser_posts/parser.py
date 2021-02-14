@@ -1,11 +1,9 @@
 import os
 import time
-
+from utils_base import *
 import requests
 from bs4 import BeautifulSoup
 import json
-
-from vk_bot.settings import TIME_UPDATE_MINUTES
 
 
 def get_html(url, params=None):
@@ -44,7 +42,7 @@ class Habr:
                 try:
                     title = i.find('h2', class_='post__title')
                     id_ = title.find('a').get('href').split('/')[-2]
-                    if id_ not in all_post['habr']['data']:
+                    if id_ not in get_id():
                         text = i.find('div', class_='post__text')
                         url = title.find('a').get('href')
                         img_soup = BeautifulSoup(
@@ -116,7 +114,7 @@ class ThreeNews:
                                 file_text.write(
                                     f'{title.get_text(strip=True)}\n\n{text.get_text()}\n\nОригинальная статья: \n{url}'
                                 )
-                                all_post['3dnews']['data'].append(id_)
+                                all_post['3dnews']['data'].append([id_, False])
                                 for img in all_img:
                                     if 'https://' in img.get('src'):
                                         file_images.write(img.get('src') + '\n')
