@@ -124,8 +124,8 @@ class LocalBot:
             all_ = json.load(all_file_r)
             # ХАБР
             habr = all_['habr']
-            for i in habr['data']:
-                if i not in habr['post_id']:
+            for ind, i in enumerate(habr['data']):
+                if not i[1]:
                     try:
                         flag = self.post_post(f'../posts/habr/post_{i}')
                     except Exception as e:
@@ -133,13 +133,13 @@ class LocalBot:
                         flag = False
                     if flag:
                         self.send_message(MY_ID, 'Пост добавлен!')
-                        habr['post_id'].append(i)
+                        habr['data'][ind][1] = True
                     else:
                         self.send_message(MY_ID, f'Не удалось опубликовать пост {i}.')
             # 3dNews
             three_d_news = all_['3dnews']
-            for i in three_d_news['data']:
-                if i not in three_d_news['post_id']:
+            for ind, i in enumerate(three_d_news['data']):
+                if not i[1]:
                     try:
                         flag = self.post_post(f'../posts/3dnews/post_{i}')
                     except Exception as e:
@@ -147,13 +147,12 @@ class LocalBot:
                         flag = False
                     if flag:
                         self.send_message(MY_ID, 'Пост добавлен!')
-                        three_d_news['post_id'].append(i)
+                        three_d_news['data'][ind][1] = True
                     else:
                         self.send_message(MY_ID, f'Не удалось опубликовать пост {i}.')
             #
             with open('../posts/all.json', 'w', encoding='utf-8') as all_file_w:
                 json.dump(all_, all_file_w)
-            self.send_message(MY_ID, f"Посты добавлены.")
 
     def parse(self) -> None:
         self.habr.parse()
