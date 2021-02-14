@@ -4,6 +4,8 @@ import os
 import random
 import time
 from threading import Thread
+
+from utils_base import *
 from vk_bot.settings import *
 
 import requests
@@ -45,47 +47,6 @@ class LocalBot:
                   'group_id': os.getenv('ID_GROUP')}
         self.data = self.post.photos.saveWallPhoto(**params)
 
-    def post_post(self, path: str) -> bool:
-        if os.path.exists(path):
-            message = ''  # {datetime.datetime.now().strftime("%H:%M:%S")}
-            photos = ''
-            try:
-                with open(path + '/text.txt', encoding='utf-8') as file_message:
-                    message = file_message.read()
-            except FileNotFoundError:
-                pass
-            try:
-                images = None
-                with open(path + '/image.txt', encoding='utf-8') as file_images:
-                    url_images = file_images.readlines()
-            except FileNotFoundError:
-                images = os.listdir(path)
-                url_images = None
-            if images:
-                for img in images:
-                    if img.split('.')[-1] in IMAGE_EXTENSION:
-                        self.upload_image(path + '/' + img)
-                        photo_id = self.data[0]['id']
-                        photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
-            elif url_images:
-                for url in url_images:
-                    url = url.rstrip()
-                    if url.split('.')[-1] in IMAGE_EXTENSION:
-                        self.upload_image(path_file=path + '/', url=url)
-                        photo_id = self.data[0]['id']
-                        photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
-                        os.remove(path + '/' + url.split('/')[-1])
-            if message == photos == '':
-                return False
-            params = {
-                'message': message,
-                'owner_id': '-' + os.getenv('ID_GROUP'),
-                'from_group': '1',
-                'attachments': photos[:-1]
-            }
-            self.post.wall.post(**params)
-            return True
-
     def send_post(self, user_id: int, count: int) -> None:
         params = {
             'owner_id': '-' + os.getenv('ID_GROUP'),
@@ -120,39 +81,34 @@ class LocalBot:
             self.send_message(event.user_id, 'Делаю!')
 
     def push_post(self) -> None:
-        with open('../posts/all.json', 'r', encoding='utf-8') as all_file_r:
-            all_ = json.load(all_file_r)
-            # ХАБР
-            habr = all_['habr']
-            for ind, i in enumerate(habr['data']):
-                if not i[1]:
-                    try:
-                        flag = self.post_post(f'../posts/habr/post_{i}')
-                    except Exception as e:
-                        print(e)
-                        flag = False
-                    if flag:
-                        self.send_message(MY_ID, 'Пост добавлен!')
-                        habr['data'][ind][1] = True
-                    else:
-                        self.send_message(MY_ID, f'Не удалось опубликовать пост {i}.')
-            # 3dNews
-            three_d_news = all_['3dnews']
-            for ind, i in enumerate(three_d_news['data']):
-                if not i[1]:
-                    try:
-                        flag = self.post_post(f'../posts/3dnews/post_{i}')
-                    except Exception as e:
-                        print(e)
-                        flag = False
-                    if flag:
-                        self.send_message(MY_ID, 'Пост добавлен!')
-                        three_d_news['data'][ind][1] = True
-                    else:
-                        self.send_message(MY_ID, f'Не удалось опубликовать пост {i}.')
-            #
-            with open('../posts/all.json', 'w', encoding='utf-8') as all_file_w:
-                json.dump(all_, all_file_w)
+        for post in get_no_push_posts():
+            try:
+                message = post[1] + "\n\n" + post[2]
+                photos = ''
+                if post[6]:
+                    for url in post[6].split('\n'):
+                        url = url.rstrip()
+                        if url.split('.')[-1] in IMAGE_EXTENSION:
+                            self.upload_image(path_file='../posts/', url=url)
+                            photo_id = self.data[0]['id']
+                            photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
+                            os.remove('../posts/' + url.split('/')[-1])
+                params = {
+                    'message': message,
+                    'owner_id': '-' + os.getenv('ID_GROUP'),
+                    'from_group': '1',
+                    'attachments': photos[:-1]
+                }
+                self.post.wall.post(**params)
+                set_post_true(post[0])
+                flag = True
+            except Exception as e:
+                print(e)
+                flag = False
+            if flag:
+                self.send_message(MY_ID, 'Пост добавлен!')
+            else:
+                self.send_message(MY_ID, f'Не удалось опубликовать пост \n{post}')
 
     def parse(self) -> None:
         self.habr.parse()
