@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="posts.db">
+<dataSource name="posts [2]">
   <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.19">
     <root id="1">
       <ServerVersion>3.31.1</ServerVersion>
@@ -46,7 +46,7 @@
     </column>
     <column id="14" parent="6" name="url">
       <Position>7</Position>
-      <DataType>VARCHAR(150)|0s</DataType>
+      <DataType>TEXT|0s</DataType>
     </column>
     <key id="15" parent="6">
       <ColNames>id</ColNames>

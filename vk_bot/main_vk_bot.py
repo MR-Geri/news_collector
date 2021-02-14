@@ -83,7 +83,14 @@ class LocalBot:
     def push_post(self) -> None:
         for post in get_no_push_posts():
             try:
-                message = post[1] + "\n\n" + post[2]
+                post_url = ''
+                if 'habr' in post[6]:
+                    post_url = 'https://habr.com/ru/news/t/'
+                elif '3dnews' in post[6]:
+                    post_url = 'https://3dnews.ru/'
+                message = f'{post[1]}\n\n{post[2]}'
+                if post_url != '':
+                    message += f'\n\nОригинальная статья: {post_url}/{post[0]}'
                 photos = ''
                 if post[6]:
                     for url in post[6].split('\n'):
