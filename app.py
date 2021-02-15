@@ -1,6 +1,6 @@
 import datetime
 
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -33,13 +33,26 @@ def about():
 
 @app.route('/posts')
 def posts():
-    articles = Article.query.order_by(Article.date.desc()).all()
-    return render_template('posts.html', articles=articles)
+    page = request.args.get('page', 1, type=int)
+    articles = Article.query.order_by(Article.date.desc()).paginate(page, 5, True)
+    next_url = url_for('posts', page=articles.next_num) if articles.has_next else None
+    prev_url = url_for('posts', page=articles.prev_num) if articles.has_prev else None
+    if page == 1:
+        active = 1
+        pages = [1, 2, 3]
+    elif next_url:
+        active = page
+        pages = [page - 1, page, page + 1]
+    else:
+        active = page
+        pages = [page - 2, page - 1, page]
+    return render_template('posts.html', articles=articles.items, next_url=next_url, prev_url=prev_url,
+                           active=active, pages=pages)
 
 
-@app.route('/posts/<int:id>')
-def post_detail(id):
-    article = Article.query.get(id)
+@app.route('/posts/<int:id_>')
+def post_detail(id_):
+    article = Article.query.get(id_)
     return render_template('post_detail.html', article=article)
 
 

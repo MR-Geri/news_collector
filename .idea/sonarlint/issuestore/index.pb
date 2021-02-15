@@ -38,5 +38,3 @@ D
 temp.py,1\a\1a1bcc8d7501d343f874d45fa35b14909cae3499
 D
 templates/posts.html,1\7\17b681f0d13f193b2b86c027cbf46fbf2cd926cb
-j
-:.idea/dataSources/421120ef-a0fe-4001-9c00-03df511b1193.xml,e\b\eb7fa9444cb71b8085ce6ff00deb86c0314405f2
