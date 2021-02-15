@@ -31,22 +31,35 @@ def about():
     return render_template('about.html')
 
 
-@app.route('/posts')
+@app.route('/posts', methods=['POST', 'GET'])
 def posts():
     page = request.args.get('page', 1, type=int)
-    articles = Article.query.order_by(Article.date.desc()).paginate(page, 5, True)
-    next_url = url_for('posts', page=articles.next_num) if articles.has_next else None
-    prev_url = url_for('posts', page=articles.prev_num) if articles.has_prev else None
-    if page == 1:
-        active = 1
-        pages = [1, 2, 3]
-    elif next_url:
-        active = page
-        pages = [page - 1, page, page + 1]
+    if request.method == 'POST':
+        search = request.form['search']
     else:
-        active = page
-        pages = [page - 2, page - 1, page]
-    return render_template('posts.html', articles=articles.items, next_url=next_url, prev_url=prev_url,
+        search = request.args.get('search', None, type=str)
+    print(search)
+    if search:
+        articles = Article.query.filter(
+            Article.title.like(f'%{search}%') | Article.intro.like(f'%{search}%') | Article.text.like(f'%{search}%') |
+            Article.id.like(f'%{search}%')
+        )
+        next_url, prev_url, active, pages = None, None, None, None
+    else:
+        articles = Article.query.order_by(Article.date.desc()).paginate(page, 5, True)
+        next_url = url_for('posts', page=articles.next_num) if articles.has_next else None
+        prev_url = url_for('posts', page=articles.prev_num) if articles.has_prev else None
+        articles = articles.items
+        if page == 1:
+            active = 1
+            pages = [1, 2, 3]
+        elif next_url:
+            active = page
+            pages = [page - 1, page, page + 1]
+        else:
+            active = page
+            pages = [page - 2, page - 1, page]
+    return render_template('posts.html', articles=articles, next_url=next_url, prev_url=prev_url,
                            active=active, pages=pages)
 
 

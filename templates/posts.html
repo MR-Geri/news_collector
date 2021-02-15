@@ -16,23 +16,25 @@
 			</div>
 		{% endfor %}
 	</div>
-	<nav aria-label="Page navigation example">
-		<ul class="pagination justify-content-center">
-			<li class="page-item {{ '' if prev_url else 'disabled' }}">
-				<a class="page-link" href="{{ prev_url }}" tabindex="-1" aria-disabled="true">Previous</a>
-			</li>
-			<li class="page-item {{ 'active' if pages[0] == active else '' }}" aria-current="page">
-				<a class="page-link" href="{{ url_for('posts', page=pages[0]) }}">{{ pages[0] }}</a>
-			</li>
-			<li class="page-item {{ 'active' if pages[1] == active else '' }}" aria-current="page">
-				<a class="page-link" href="{{ url_for('posts', page=pages[1]) }}">{{ pages[1] }}</a>
-			</li>
-			<li class="page-item {{ 'active' if pages[2] == active else '' }}" aria-current="page">
-				<a class="page-link" href="{{ url_for('posts', page=pages[2]) }}">{{ pages[2] }}</a>
-			</li>
-			<li class="page-item {{ '' if next_url else 'disabled' }}">
-				<a class="page-link" href="{{ next_url }}" tabindex="-1" aria-disabled="true">Next</a>
-			</li>
-		</ul>
-	</nav>
+	{% if active %}
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				<li class="page-item {{ '' if prev_url else 'disabled' }}">
+					<a class="page-link" href="{{ prev_url }}" tabindex="-1" aria-disabled="true">Previous</a>
+				</li>
+				<li class="page-item {{ 'active' if pages[0] == active else '' }}" aria-current="page">
+					<a class="page-link" href="{{ url_for('posts', page=pages[0]) }}">{{ pages[0] }}</a>
+				</li>
+				<li class="page-item {{ 'active' if pages[1] == active else '' }}" aria-current="page">
+					<a class="page-link" href="{{ url_for('posts', page=pages[1]) }}">{{ pages[1] }}</a>
+				</li>
+				<li class="page-item {{ 'active' if pages[2] == active else '' }}" aria-current="page">
+					<a class="page-link" href="{{ url_for('posts', page=pages[2]) }}">{{ pages[2] }}</a>
+				</li>
+				<li class="page-item {{ '' if next_url else 'disabled' }}">
+					<a class="page-link" href="{{ next_url }}" tabindex="-1" aria-disabled="true">Next</a>
+				</li>
+			</ul>
+		</nav>
+	{% endif %}
 {% endblock %}
