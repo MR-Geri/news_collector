@@ -38,7 +38,6 @@ def posts():
         search = request.form['search']
     else:
         search = request.args.get('search', None, type=str)
-    print(search)
     if search:
         articles = Article.query.filter(
             Article.title.like(f'%{search}%') | Article.intro.like(f'%{search}%') | Article.text.like(f'%{search}%') |

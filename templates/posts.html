@@ -6,13 +6,13 @@
 
 {% block body %}
 	<div class="container mt-5">
-		<h1>Все статьи</h1>
+		<h1 class="text-center">Все статьи</h1>
 		{% for el in articles %}
 			<div class="alert alert-info">
 				<h2>{{ el.title }}</h2>
 				<p>{{ el.intro }}</p>
 				<p>{{ el.date }}</p>
-				<a href="/posts/{{ el.id }}" class="btn btn-warning">Детальнее</a>
+				<a href="/posts/{{ el.id }}" class="btn btn-warning" target="_blank">Детальнее</a>
 			</div>
 		{% endfor %}
 	</div>
