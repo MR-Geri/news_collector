@@ -68,5 +68,4 @@ def post_detail(id_):
 
 
 if __name__ == '__main__':
-    vk()
     app.run()
