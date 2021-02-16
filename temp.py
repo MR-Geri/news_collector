@@ -1,7 +1,6 @@
-import time
-
+from app import app
+from vk_bot.main_vk_bot import vk
 
 if __name__ == '__main__':
-    t = time.time()
-    time.sleep(10)
-    print(time.time() - t)
+    vk()
+    app.run()
