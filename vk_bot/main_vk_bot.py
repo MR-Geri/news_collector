@@ -113,8 +113,6 @@ class LocalBot:
                 flag = False
             if flag:
                 self.send_message(MY_ID, 'Пост добавлен!')
-            else:
-                self.send_message(MY_ID, f'Не удалось опубликовать пост \n{post}')
 
     def parse(self) -> None:
         self.habr.parse()
