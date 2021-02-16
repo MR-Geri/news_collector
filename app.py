@@ -50,14 +50,11 @@ def posts():
         prev_url = url_for('posts', page=articles.prev_num) if articles.has_prev else None
         articles = articles.items
         if page == 1:
-            active = 1
-            pages = [1, 2, 3]
+            active, pages = 1, [1, 2, 3]
         elif next_url:
-            active = page
-            pages = [page - 1, page, page + 1]
+            active, pages = page, [page - 1, page, page + 1]
         else:
-            active = page
-            pages = [page - 2, page - 1, page]
+            active, pages = page, [page - 2, page - 1, page]
     return render_template('posts.html', articles=articles, next_url=next_url, prev_url=prev_url,
                            active=active, pages=pages)
 
