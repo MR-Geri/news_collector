@@ -56,7 +56,7 @@ class LocalBot:
             self.send_message(user_id, '', f"wall-{ID_GROUP}_{post['id']}")
 
     def send_message(self, user_id, message, attachment: str = '') -> None:
-        path = r'../vk_bot/button.json'
+        path = r'button.json'
         while True:
             try:
                 self.vk.messages.send(user_id=user_id, random_id=random.getrandbits(32), message=message,
