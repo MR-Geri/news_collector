@@ -119,7 +119,7 @@ class LocalBot:
 
     def parse(self) -> None:
         self.habr.parse()
-        self.three_d_news.parse()
+        # self.three_d_news.parse()
 
     def start(self) -> None:
         try:

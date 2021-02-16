@@ -20,8 +20,6 @@ B
 vk_bot/settings.py,0\5\0512f8814837f3cb67277cc53365d0c014996933
 E
 vk_bot/main_vk_bot.py,e\3\e380e104ae7f437f95b46ea9e05c03261590ecc9
->
-posts/all.json,7\5\75d043f4de965d17c3fd69df40df2e9cf48091de
 F
 parser_posts/parser.py,f\a\fa8e2b0bbae53a6a3cac2fef3536ffb4eb90f6b4
 D
@@ -38,3 +36,9 @@ D
 temp.py,1\a\1a1bcc8d7501d343f874d45fa35b14909cae3499
 D
 templates/posts.html,1\7\17b681f0d13f193b2b86c027cbf46fbf2cd926cb
+=
+utils_base.py,3\5\35a7d6b61b4df4af1b67c2c9f1034cc7672ff7c2
+j
+:.idea/dataSources/ad927188-94a3-498c-85b3-77b281fc703f.xml,4\0\40bd29bd53ad9e5cdcc7637fba8dfa5f14a664dd
+J
+templates/post_detail.html,b\a\ba3ca53ae79f51be95b022d6eb51613ef950117d
