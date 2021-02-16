@@ -98,7 +98,7 @@ class LocalBot:
                             self.upload_image(path_file='../posts/', url=url)
                             photo_id = self.data[0]['id']
                             photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
-                            os.remove('../posts/' + url.split('/')[-1])
+                            os.remove('posts/' + url.split('/')[-1])
                 params = {
                     'message': message,
                     'owner_id': '-' + ID_GROUP,
