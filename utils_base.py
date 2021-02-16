@@ -4,8 +4,8 @@ from contextlib import contextmanager
 
 @contextmanager
 def get_base(file: str, is_commit: bool = False):
+    con = sqlite3.connect(file)
     try:
-        con = sqlite3.connect(file)
         sql = con.cursor()
         yield sql
     finally:
