@@ -3,6 +3,8 @@ import datetime
 from flask import Flask, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 
+from vk_bot.main_vk_bot import vk
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.sqlite'
 db = SQLAlchemy(app)
