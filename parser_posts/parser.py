@@ -55,7 +55,7 @@ class Habr:
                     date = datetime(*map(int, date[0].split('-')), *map(int, date[1][:-1].split(':')))
                     date += timedelta(hours=3)
                     #
-                    with get_base('../posts.sqlite', True) as base:
+                    with get_base(True) as base:
                         base.execute("""INSERT INTO article (id, title, intro, text, date, flag, url)
                                             VALUES(?, ?, ?, ?, ?, ?, ?)""", (
                             id_,
@@ -104,7 +104,7 @@ class ThreeNews:
                         if 'https://' in img.get('src'):
                             all_img.append(img.get('src'))
                     #
-                    with get_base('../posts.sqlite', True) as base:
+                    with get_base(True) as base:
                         base.execute("""INSERT INTO article (id, title, intro, text, date, flag, url)
                                             VALUES(?, ?, ?, ?, ?, ?, ?)""",
                                      (

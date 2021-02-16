@@ -10,7 +10,7 @@
 		<div class="alert alert-info">
 			<p>{{ article.text }}</p>
 			{% for img in article.url.split('\n') %}
-				<img src="{{ img }}" class="rounded mx-auto d-block mt-3">
+				<img src="{{ img }}" class="rounded mx-auto d-block mt-3 img-fluid">
 			{% endfor %}
 			<p>{{ article.date }}</p>
 			<a href="/posts" class="btn btn-warning">На главную</a>
