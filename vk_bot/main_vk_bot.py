@@ -18,11 +18,10 @@ from vk_bot.polls import MyVkLongPoll
 
 class LocalBot:
     def __init__(self) -> None:
-        self.token = os.getenv('TOKEN')
+        self.token = TOKEN
         self.vk_session = vk_api.VkApi(token=self.token)
         self.vk = self.vk_session.get_api()
-        self.post_session = vk_api.VkApi(app_id=int(os.getenv('APP_ID')), scope='wall',
-                                         token=os.getenv('ACCESS_TOKEN'))
+        self.post_session = vk_api.VkApi(app_id=int(APP_ID), scope='wall', token=ACCESS_TOKEN)
         self.post = self.post_session.get_api()
         self.data = None
         self.long = MyVkLongPoll(self.vk_session)
@@ -33,7 +32,7 @@ class LocalBot:
         self.time_update = time.time()
 
     def upload_image(self, path_file: str = '', url: str = None) -> None:
-        upload_url = self.post.photos.getWallUploadServer(group_id=os.getenv('ID_GROUP'))['upload_url']
+        upload_url = self.post.photos.getWallUploadServer(group_id=ID_GROUP)['upload_url']
         if not url:
             photo = open(path_file, 'rb')
         else:
@@ -44,20 +43,20 @@ class LocalBot:
         params = {'server': request.json()['server'],
                   'photo': request.json()['photo'],
                   'hash': request.json()['hash'],
-                  'group_id': os.getenv('ID_GROUP')}
+                  'group_id': ID_GROUP}
         self.data = self.post.photos.saveWallPhoto(**params)
 
     def send_post(self, user_id: int, count: int) -> None:
         params = {
-            'owner_id': '-' + os.getenv('ID_GROUP'),
+            'owner_id': '-' + ID_GROUP,
             'count': count
         }
         posts = self.post.wall.get(**params)['items'][:count]
         for post in posts:
-            self.send_message(user_id, '', f"wall-{os.getenv('ID_GROUP')}_{post['id']}")
+            self.send_message(user_id, '', f"wall-{ID_GROUP}_{post['id']}")
 
     def send_message(self, user_id, message, attachment: str = '') -> None:
-        path = r'button.json'
+        path = r'vk_bot/button.json'
         while True:
             try:
                 self.vk.messages.send(user_id=user_id, random_id=random.getrandbits(32), message=message,
@@ -96,13 +95,13 @@ class LocalBot:
                     for url in post[6].split('\n'):
                         url = url.rstrip()
                         if url.split('.')[-1] in IMAGE_EXTENSION:
-                            self.upload_image(path_file='../posts/', url=url)
+                            self.upload_image(path_file='posts/', url=url)
                             photo_id = self.data[0]['id']
                             photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
-                            os.remove('../posts/' + url.split('/')[-1])
+                            os.remove('posts/' + url.split('/')[-1])
                 params = {
                     'message': message,
-                    'owner_id': '-' + os.getenv('ID_GROUP'),
+                    'owner_id': '-' + ID_GROUP,
                     'from_group': '1',
                     'attachments': photos[:-1]
                 }
