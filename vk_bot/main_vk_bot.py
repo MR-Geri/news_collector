@@ -34,11 +34,13 @@ class LocalBot:
     def upload_image(self, path_file: str = '', url: str = None) -> None:
         upload_url = self.post.photos.getWallUploadServer(group_id=ID_GROUP)['upload_url']
         if not url:
-            photo = open(path_file, 'rb')
+            photo = open(os.path.abspath(path_file), 'rb')
         else:
-            with open(path_file + url.split('/')[-1], 'wb') as file:
+            path = os.path.abspath(path_file + url.split('/')[-1])
+            print(path)
+            with open(path, 'wb') as file:
                 file.write(requests.get(url).content)
-            photo = open(path_file + url.split('/')[-1], 'rb')
+            photo = open(path, 'rb')
         request = requests.post(upload_url, files={'photo': photo})
         params = {'server': request.json()['server'],
                   'photo': request.json()['photo'],
@@ -56,7 +58,7 @@ class LocalBot:
             self.send_message(user_id, '', f"wall-{ID_GROUP}_{post['id']}")
 
     def send_message(self, user_id, message, attachment: str = '') -> None:
-        path = r'button.json'
+        path = os.path.abspath('vk_bot/button.json')
         while True:
             try:
                 self.vk.messages.send(user_id=user_id, random_id=random.getrandbits(32), message=message,
@@ -95,10 +97,10 @@ class LocalBot:
                     for url in post[6].split('\n'):
                         url = url.rstrip()
                         if url.split('.')[-1] in IMAGE_EXTENSION:
-                            self.upload_image(path_file='../posts/', url=url)
+                            self.upload_image(path_file='posts/', url=url)
                             photo_id = self.data[0]['id']
                             photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
-                            os.remove('../posts/' + url.split('/')[-1])
+                            os.remove(os.path.abspath('posts/' + url.split('/')[-1]))
                 params = {
                     'message': message,
                     'owner_id': '-' + ID_GROUP,

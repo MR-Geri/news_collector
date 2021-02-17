@@ -1,10 +1,11 @@
+import os
 import sqlite3
 from contextlib import contextmanager
 
 
 @contextmanager
 def get_base(is_commit: bool = False):
-    con = sqlite3.connect('../posts.sqlite')
+    con = sqlite3.connect(os.path.abspath('posts.sqlite'))
     try:
         sql = con.cursor()
         yield sql
