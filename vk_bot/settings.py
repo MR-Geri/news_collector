@@ -1,9 +1,3 @@
 IMAGE_EXTENSION = ['jpg', 'jpeg', 'png']
 MY_ID = 212360934
 TIME_UPDATE_MINUTES = 10
-TOKEN = '871aecfb369f110f698a503dcc401b0a38a1434aaf6e4a4ac481f7ff5536155e0244878d7cd6037a0bd9a'
-ID_GROUP = '202494327'
-APP_ID = '7757553'
-APP_TOKEN = '05294bb705294bb705294bb7c3055f15680052905294bb7650d4d981655ddae174fc2f1'
-ACCESS_TOKEN = '7b14613551b8fb2f91101160cecb60249e1fb3c49ced84a0aee2fe87d14e09910d671a11e8c9f85dbb647'
-INFO = 'https://avleonov.com/2017/07/10/automated-posting-on-vkontakte-public-pages-using-vk-api-and-python/'
