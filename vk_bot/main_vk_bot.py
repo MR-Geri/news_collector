@@ -36,9 +36,11 @@ class LocalBot:
         if not url:
             photo = open(os.path.abspath(path_file), 'rb')
         else:
-            with open(os.path.abspath(path_file + url.split('/')[-1]), 'wb') as file:
+            path = os.path.abspath(path_file + url.split('/')[-1])
+            print(path)
+            with open(path, 'wb') as file:
                 file.write(requests.get(url).content)
-            photo = open(os.path.abspath(path_file + url.split('/')[-1]), 'rb')
+            photo = open(path, 'rb')
         request = requests.post(upload_url, files={'photo': photo})
         params = {'server': request.json()['server'],
                   'photo': request.json()['photo'],
