@@ -56,7 +56,7 @@ class LocalBot:
             self.send_message(user_id, '', f"wall-{ID_GROUP}_{post['id']}")
 
     def send_message(self, user_id, message, attachment: str = '') -> None:
-        path = r'vk_bot/button.json'
+        path = r'button.json'
         while True:
             try:
                 self.vk.messages.send(user_id=user_id, random_id=random.getrandbits(32), message=message,
@@ -95,10 +95,10 @@ class LocalBot:
                     for url in post[6].split('\n'):
                         url = url.rstrip()
                         if url.split('.')[-1] in IMAGE_EXTENSION:
-                            self.upload_image(path_file='posts/', url=url)
+                            self.upload_image(path_file='../posts/', url=url)
                             photo_id = self.data[0]['id']
                             photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
-                            os.remove('posts/' + url.split('/')[-1])
+                            os.remove('../posts/' + url.split('/')[-1])
                 params = {
                     'message': message,
                     'owner_id': '-' + ID_GROUP,
