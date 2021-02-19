@@ -32,13 +32,11 @@ C
 static/css/main.css,1\d\1d911fa3e8e9e880e642b3cfb08a49276784f29a
 D
 templates/index.html,f\6\f69b8ce2e31684ae06f1b3e84821e07e3dfddb2f
-7
-temp.py,1\a\1a1bcc8d7501d343f874d45fa35b14909cae3499
 D
 templates/posts.html,1\7\17b681f0d13f193b2b86c027cbf46fbf2cd926cb
 =
 utils_base.py,3\5\35a7d6b61b4df4af1b67c2c9f1034cc7672ff7c2
-j
-:.idea/dataSources/ad927188-94a3-498c-85b3-77b281fc703f.xml,4\0\40bd29bd53ad9e5cdcc7637fba8dfa5f14a664dd
 J
 templates/post_detail.html,b\a\ba3ca53ae79f51be95b022d6eb51613ef950117d
+j
+:.idea/dataSources/9e218d15-ca69-407b-aa1e-1424d24f75d7.xml,d\b\db070ab8bdfd9a89f071ceb06fb9239f9fec05c3
