@@ -18,6 +18,24 @@
         },
         "color": "primary"
       }
+    ],
+    [
+      {
+        "action": {
+          "type": "text",
+          "label": "Запость всё"
+        },
+        "color": "primary"
+      }
+    ],
+    [
+      {
+        "action": {
+          "type": "text",
+          "label": "Парси"
+        },
+        "color": "primary"
+      }
     ]
   ]
 }

@@ -57,7 +57,10 @@ class LocalBot:
             self.send_message(user_id, '', f"wall-{ID_GROUP}_{post['id']}")
 
     def send_message(self, user_id, message, attachment: str = '') -> None:
-        path = os.path.abspath('button.json')
+        if user_id == MY_ID:
+            path = os.path.abspath('my_buttons.json')
+        else:
+            path = os.path.abspath('button.json')
         while True:
             try:
                 self.vk.messages.send(user_id=user_id, random_id=random.getrandbits(32), message=message,
@@ -135,7 +138,7 @@ class LocalBot:
 
 
 logger = logging.getLogger(__name__)
-f_handler = logging.FileHandler(r'bot_crash.log')
+f_handler = logging.FileHandler(r'../vk_bot/bot_crash.log')
 f_handler.setLevel(logging.ERROR)
 f_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 f_handler.setFormatter(f_format)

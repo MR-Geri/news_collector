@@ -41,7 +41,7 @@ def posts():
     else:
         search = request.args.get('search', None, type=str)
     if search:
-        articles = Article.query.filter(
+        articles = Article.query.order_by(Article.date.desc()).filter(
             Article.title.like(f'%{search}%') | Article.intro.like(f'%{search}%') | Article.text.like(f'%{search}%') |
             Article.id.like(f'%{search}%')
         )
