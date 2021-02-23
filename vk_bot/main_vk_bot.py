@@ -18,10 +18,11 @@ from vk_bot.polls import MyVkLongPoll
 
 class LocalBot:
     def __init__(self) -> None:
-        self.token = TOKEN
+        self.token = os.getenv('TOKEN')
         self.vk_session = vk_api.VkApi(token=self.token)
         self.vk = self.vk_session.get_api()
-        self.post_session = vk_api.VkApi(app_id=int(APP_ID), scope='wall', token=ACCESS_TOKEN)
+        self.post_session = vk_api.VkApi(app_id=int(os.getenv('APP_ID')),
+                                         scope='wall', token=os.getenv('ACCESS_TOKEN'))
         self.post = self.post_session.get_api()
         self.data = None
         self.long = MyVkLongPoll(self.vk_session)
@@ -32,7 +33,7 @@ class LocalBot:
         self.time_update = time.time()
 
     def upload_image(self, path_file: str = '', url: str = None) -> None:
-        upload_url = self.post.photos.getWallUploadServer(group_id=ID_GROUP)['upload_url']
+        upload_url = self.post.photos.getWallUploadServer(group_id=os.getenv("ID_GROUP"))['upload_url']
         if not url:
             photo = open(path_file, 'rb')
         else:
@@ -44,17 +45,17 @@ class LocalBot:
         params = {'server': request.json()['server'],
                   'photo': request.json()['photo'],
                   'hash': request.json()['hash'],
-                  'group_id': ID_GROUP}
+                  'group_id': os.getenv("ID_GROUP")}
         self.data = self.post.photos.saveWallPhoto(**params)
 
     def send_post(self, user_id: int, count: int) -> None:
         params = {
-            'owner_id': '-' + ID_GROUP,
+            'owner_id': '-' + os.getenv("ID_GROUP"),
             'count': count
         }
         posts = self.post.wall.get(**params)['items'][:count]
         for post in posts:
-            self.send_message(user_id, '', f"wall-{ID_GROUP}_{post['id']}")
+            self.send_message(user_id, '', f"wall-{os.getenv('ID_GROUP')}_{post['id']}")
 
     def send_message(self, user_id, message, attachment: str = '') -> None:
         if user_id == MY_ID:
@@ -105,7 +106,7 @@ class LocalBot:
                             os.remove('../posts/' + url.split('/')[-1])
                 params = {
                     'message': message,
-                    'owner_id': '-' + ID_GROUP,
+                    'owner_id': '-' + os.getenv("ID_GROUP"),
                     'from_group': '1',
                     'attachments': photos[:-1]
                 }
