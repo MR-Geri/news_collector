@@ -122,6 +122,6 @@ class ThreeNews:
 
 if __name__ == '__main__':
     habr = Habr()
-    # three_d_news = ThreeNews()
+    three_d_news = ThreeNews()
     habr.parse()
-    # three_d_news.parse()
+    three_d_news.parse()

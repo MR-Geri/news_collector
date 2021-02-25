@@ -57,6 +57,10 @@ class LocalBot:
         for post in posts:
             self.send_message(user_id, '', f"wall-{os.getenv('ID_GROUP')}_{post['id']}")
 
+    def ddos(self, user_id: int):
+        for i in range(1, 51):
+            self.send_message(user_id=user_id, message=f'Соси писю {i} раз')
+
     def send_message(self, user_id, message, attachment: str = '') -> None:
         if user_id == MY_ID:
             path = os.path.abspath('my_buttons.json')
@@ -83,6 +87,8 @@ class LocalBot:
         elif event.text.lower() == 'парси' and event.user_id == MY_ID:
             self.parse()
             self.send_message(event.user_id, 'Делаю!')
+        elif 'ддос' in event.text.lower() and event.user_id == MY_ID:
+            self.ddos(event.text.split()[-1])
 
     def push_post(self) -> None:
         for post in get_no_push_posts():
@@ -139,7 +145,7 @@ class LocalBot:
 
 
 logger = logging.getLogger(__name__)
-f_handler = logging.FileHandler(r'../vk_bot/bot_crash.log')
+f_handler = logging.FileHandler(r'bot_crash.log')
 f_handler.setLevel(logging.ERROR)
 f_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 f_handler.setFormatter(f_format)

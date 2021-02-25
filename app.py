@@ -1,13 +1,24 @@
 import datetime
 
+from bs4 import BeautifulSoup
 from flask import Flask, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 
+from parser_posts.parser import get_html
 from vk_bot.main_vk_bot import vk
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.sqlite'
 db = SQLAlchemy(app)
+
+
+def update_class(line: str) -> str:
+    if 'class=' in line:
+        r_line = line[line.find('class="') + 7:].find('"') + line.find('class="') + 9
+        line = line[:line.find('"') - 6] + line[r_line:]
+    if '<img' in line:
+        line = line.replace('<img ', '<img class="rounded mx-auto d-block mt-3 img-fluid " ')
+    return line
 
 
 class Article(db.Model):
@@ -42,7 +53,8 @@ def posts():
         search = request.args.get('search', None, type=str)
     if search:
         articles = Article.query.order_by(Article.date.desc()).filter(
-            Article.title.like(f'%{search}%') | Article.intro.like(f'%{search}%') | Article.text.like(f'%{search}%') |
+            Article.title.like(f'%{search}%') | Article.intro.like(f'%{search}%') | Article.text.like(
+                f'%{search}%') |
             Article.id.like(f'%{search}%')
         )
         next_url, prev_url, active, pages = None, None, None, None
@@ -65,6 +77,17 @@ def posts():
 def post_detail(id_):
     article = Article.query.get(id_)
     return render_template('post_detail.html', article=article)
+
+
+@app.route('/posts/<int:id_>')
+def post(id_):
+    html = BeautifulSoup(get_html(f'https://habr.com/ru/news/t/{id_}').text, 'html.parser')
+    body = str(html.find('div', class_='post__text post__text-html post__text_v1')).replace('/>', '>').split('\n')
+    for i in range(len(body)):
+        body[i] = update_class(body[i])
+    body.insert(0, '<div class="container mt-5 alert alert-info">')
+    body.append('</div>')
+    return render_template('test_post_detail.html', id_=id_).replace('<div></div>', '\n'.join(body))
 
 
 if __name__ == '__main__':

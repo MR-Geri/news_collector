@@ -40,3 +40,7 @@ J
 templates/post_detail.html,b\a\ba3ca53ae79f51be95b022d6eb51613ef950117d
 j
 :.idea/dataSources/9e218d15-ca69-407b-aa1e-1424d24f75d7.xml,d\b\db070ab8bdfd9a89f071ceb06fb9239f9fec05c3
+F
+vk_bot/my_buttons.json,b\5\b54b9013237436f0d37d58a6128239712234cc91
+O
+templates/test_post_detail.html,d\f\dfe0244cbb413efeb874da642759e6a06e72f751
