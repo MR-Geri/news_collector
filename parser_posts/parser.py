@@ -49,19 +49,17 @@ class Habr:
                     for img in post_soup.find('div', class_='post__wrapper').find_all('img'):
                         if 'https://' in img.get('src'):
                             all_img.append(img.get('src'))
-                    text = post_soup.find('div', class_='post__text').get_text(strip=True)
                     # 2021-02-14T13:11Z
                     date = post_soup.find('span', class_='post__time').get('data-time_published').split('T')
                     date = datetime(*map(int, date[0].split('-')), *map(int, date[1][:-1].split(':')))
                     date += timedelta(hours=3)
                     #
                     with get_base(True) as base:
-                        base.execute("""INSERT INTO article (id, title, intro, text, date, flag, url)
-                                            VALUES(?, ?, ?, ?, ?, ?, ?)""", (
+                        base.execute("""INSERT INTO article (id, title, intro, date, flag, url)
+                                            VALUES(?, ?, ?, ?, ?, ?)""", (
                             id_,
                             title.get_text(strip=True),
                             intro.get_text(),
-                            text,
                             date,
                             False,
                             '\n'.join(all_img)
@@ -95,7 +93,6 @@ class ThreeNews:
                     intro = i.find('p')
                     url = self.url + '/'.join(title.get('href').split('/')[:-1])
                     post_soup = BeautifulSoup(get_html(url).text, 'html.parser')
-                    text = post_soup.find('div', class_='js-mediator-article').get_text(strip=True)
                     # 2021-02-14T14:45:00+03:00
                     date = post_soup.find('span', class_='entry-date').get('content').split('T')
                     date = datetime(*map(int, date[0].split('-')), *map(int, date[1].split(':')[:2]))
@@ -105,13 +102,12 @@ class ThreeNews:
                             all_img.append(img.get('src'))
                     #
                     with get_base(True) as base:
-                        base.execute("""INSERT INTO article (id, title, intro, text, date, flag, url)
-                                            VALUES(?, ?, ?, ?, ?, ?, ?)""",
+                        base.execute("""INSERT INTO article (id, title, intro, date, flag, url)
+                                            VALUES(?, ?, ?, ?, ?, ?)""",
                                      (
                                          id_,
                                          title.get_text(strip=True),
                                          intro.get_text(),
-                                         text,
                                          date,
                                          False,
                                          '\n'.join(all_img)

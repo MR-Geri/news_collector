@@ -46,3 +46,5 @@ O
 templates/test_post_detail.html,d\f\dfe0244cbb413efeb874da642759e6a06e72f751
 =
 bot_crash.log,d\9\d9d60c3c7556e06394d8262e6a8897f0ad33cf17
+D
+vk_bot/server_bot.py,e\a\ea5f5f03b620730f9e665f7d9fc6803dc60b24dd

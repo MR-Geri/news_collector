@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 
 {% block title %}
-{{ id_ }}
+	{{ article.title }}
 {% endblock %}
 
 {% block body %}
-	<div></div>
+	<div class="container mt-5">
+		<h1>{{ article.title }}</h1>
+		<div class="alert alert-info">
+			<div></div>
+			<hr>
+			<p>{{ article.date }}</p>
+			<a href="/posts" class="btn btn-warning">На главную</a>
+		</div>
+	</div>
 {% endblock %}

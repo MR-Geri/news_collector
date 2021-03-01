@@ -25,7 +25,6 @@ class Article(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(250), nullable=False)
     intro = db.Column(db.String(300), nullable=False)
-    text = db.Column(db.Text, nullable=False)
     date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     flag = db.Column(db.Boolean, default=False)
     url = db.Column(db.Text, default='')
@@ -74,20 +73,13 @@ def posts():
 
 
 @app.route('/posts/<int:id_>')
-def post_detail(id_):
-    article = Article.query.get(id_)
-    return render_template('post_detail.html', article=article)
-
-
-@app.route('/posts/<int:id_>')
 def post(id_):
     html = BeautifulSoup(get_html(f'https://habr.com/ru/news/t/{id_}').text, 'html.parser')
-    body = str(html.find('div', class_='post__text post__text-html post__text_v1')).replace('/>', '>').split('\n')
+    body = str(html.find('div', class_='post__text')).replace('/>', '>').split('\n')
     for i in range(len(body)):
         body[i] = update_class(body[i])
-    body.insert(0, '<div class="container mt-5 alert alert-info">')
-    body.append('</div>')
-    return render_template('test_post_detail.html', id_=id_).replace('<div></div>', '\n'.join(body))
+    article = Article.query.get(id_)
+    return render_template('test_post_detail.html', article=article).replace('<div></div>', '\n'.join(body))
 
 
 if __name__ == '__main__':
