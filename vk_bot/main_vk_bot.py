@@ -89,13 +89,13 @@ class LocalBot:
                 message = f'{post[1]}\n\n{post[2]}\n\nОригинальная статья: {post[6]}'
                 photos = ''
                 if post[6]:
-                    for url in post[5].split('\n'):
+                    for url in post[6].split('\n'):
                         url = url.rstrip()
                         if url.split('.')[-1] in IMAGE_EXTENSION:
-                            self.upload_image(path_file='../', url=url)
+                            self.upload_image(path_file='../posts/', url=url)
                             photo_id = self.data[0]['id']
                             photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
-                            os.remove('../' + url.split('/')[-1])
+                            os.remove('../posts/' + url.split('/')[-1])
                 params = {
                     'message': message,
                     'owner_id': '-' + ID_GROUP,
