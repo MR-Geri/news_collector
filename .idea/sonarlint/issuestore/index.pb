@@ -31,11 +31,22 @@ D
 utils_base.py,3\5\35a7d6b61b4df4af1b67c2c9f1034cc7672ff7c2
 J
 templates/post_detail.html,b\a\ba3ca53ae79f51be95b022d6eb51613ef950117d
-j
-:.idea/dataSources/9e218d15-ca69-407b-aa1e-1424d24f75d7.xml,d\b\db070ab8bdfd9a89f071ceb06fb9239f9fec05c3
 F
 vk_bot/my_buttons.json,b\5\b54b9013237436f0d37d58a6128239712234cc91
 O
 templates/test_post_detail.html,d\f\dfe0244cbb413efeb874da642759e6a06e72f751
 =
 bot_crash.log,d\9\d9d60c3c7556e06394d8262e6a8897f0ad33cf17
+j
+:.idea/dataSources/999c33f5-52f1-45be-9f23-171b816260d2.xml,0\5\0589eabcf49c73524f14e471016d3cae240d2c20
+>
+vk_bot/bot.env,4\f\4f2805f3b5b059c802f2df39be81cd8703e024a9
+=
+vk_bot/bot.py,3\8\3852216ad1f44d1d2d256711a42169447a2e4934
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+D
+vk_bot/server_bot.py,e\a\ea5f5f03b620730f9e665f7d9fc6803dc60b24dd
+D
+vk_bot/bot_crash.log,8\a\8a893fcc4119c150e38eb70c9a8fb6f4344a48f2
