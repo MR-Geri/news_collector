@@ -20,9 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44ceb8bf-c9af-4cc1-b1e0-c8801ec7aa3b" name="Default Changelist" comment="mm">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ignore" beforeDir="false" afterPath="$PROJECT_DIR$/.ignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram_bot/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/telegram_bot/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vk_bot/main_vk_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/vk_bot/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,8 +69,30 @@
       <recent name="D:\PycharmProjects\web_project\vk_bot" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main_vk_bot">
-    <configuration name="main_vk_bot" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.main (1)">
+    <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="web_project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/telegram_bot" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/telegram_bot/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="web_project" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -83,7 +105,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/vk_bot/main_vk_bot.py" />
+      <option name="SCRIPT_NAME" value="D:\PycharmProjects\web_project\vk_bot\main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -129,7 +151,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="D:\PycharmProjects\web_project\venv\Scripts\python.exe" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -151,9 +173,11 @@
       <item itemvalue="Flask server.Flask" />
       <item itemvalue="Python.parser" />
       <item itemvalue="Python.main_vk_bot" />
+      <item itemvalue="Python.main (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.main_vk_bot" />
         <item itemvalue="Python.parser" />
       </list>
@@ -172,7 +196,7 @@
       <workItem from="1614853440555" duration="7593000" />
       <workItem from="1614864538717" duration="609000" />
       <workItem from="1614873845321" duration="2867000" />
-      <workItem from="1614880587626" duration="1481000" />
+      <workItem from="1614880587626" duration="2900000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1614856488199</created>
@@ -216,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614881634447</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="mm">
+      <created>1614883299557</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1614883299557</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,22 +283,22 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1061" y="476" key="FileChooserDialogImpl/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614866217985" />
-    <state width="2517" height="289" key="GridCell.Tab.0.bottom" timestamp="1614863626326">
+    <state width="2517" height="289" key="GridCell.Tab.0.bottom" timestamp="1614884110099">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2517" height="289" key="GridCell.Tab.0.bottom/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614863626326" />
-    <state width="2517" height="289" key="GridCell.Tab.0.center" timestamp="1614863626326">
+    <state width="2517" height="289" key="GridCell.Tab.0.bottom/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614884110099" />
+    <state width="2517" height="289" key="GridCell.Tab.0.center" timestamp="1614884110099">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2517" height="289" key="GridCell.Tab.0.center/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614863626326" />
-    <state width="2517" height="289" key="GridCell.Tab.0.left" timestamp="1614863626326">
+    <state width="2517" height="289" key="GridCell.Tab.0.center/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614884110099" />
+    <state width="2517" height="289" key="GridCell.Tab.0.left" timestamp="1614884110099">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2517" height="289" key="GridCell.Tab.0.left/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614863626326" />
-    <state width="2517" height="289" key="GridCell.Tab.0.right" timestamp="1614863626326">
+    <state width="2517" height="289" key="GridCell.Tab.0.left/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614884110099" />
+    <state width="2517" height="289" key="GridCell.Tab.0.right" timestamp="1614884110099">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2517" height="289" key="GridCell.Tab.0.right/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614863626326" />
+    <state width="2517" height="289" key="GridCell.Tab.0.right/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614884110099" />
     <state x="873" y="450" key="Vcs.Push.Dialog.v2" timestamp="1614881667587">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
@@ -279,6 +310,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/web_project$parser.coverage" NAME="parser Coverage Results" MODIFIED="1614855973737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/parser_posts" />
+    <SUITE FILE_PATH="coverage/web_project$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1614884110094" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/telegram_bot" />
     <SUITE FILE_PATH="coverage/web_project$Flask.coverage" NAME="Flask Coverage Results" MODIFIED="1614856320061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/web_project$main_vk_bot.coverage" NAME="main_vk_bot Coverage Results" MODIFIED="1614860191578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vk_bot" />
   </component>
