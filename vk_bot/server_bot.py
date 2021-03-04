@@ -1,4 +1,4 @@
-import json
+from vk_bot.bot import *
 import logging
 import os
 import random
@@ -18,13 +18,11 @@ from vk_bot.polls import MyVkLongPoll
 
 class LocalBot:
     def __init__(self) -> None:
-        self.token = os.getenv('TOKEN')
+        self.token = TOKEN
         self.vk_session = vk_api.VkApi(token=self.token)
         self.vk = self.vk_session.get_api()
-        self.post_session = vk_api.VkApi(app_id=int(7757553),
-                                         scope='wall',
-                                         token='7b14613551b8fb2f91101160cecb60249e1fb3'
-                                               'c49ced84a0aee2fe87d14e09910d671a11e8c9f85dbb647')
+        self.post_session = vk_api.VkApi(app_id=int(APP_ID),
+                                         scope='wall', token=ACCESS_TOKEN)
         self.post = self.post_session.get_api()
         self.data = None
         self.long = MyVkLongPoll(self.vk_session)
@@ -35,7 +33,7 @@ class LocalBot:
         self.time_update = time.time()
 
     def upload_image(self, path_file: str = '', url: str = None) -> None:
-        upload_url = self.post.photos.getWallUploadServer(group_id=202494327)['upload_url']
+        upload_url = self.post.photos.getWallUploadServer(group_id=ID_GROUP)['upload_url']
         if not url:
             photo = open(path_file, 'rb')
         else:
@@ -47,17 +45,17 @@ class LocalBot:
         params = {'server': request.json()['server'],
                   'photo': request.json()['photo'],
                   'hash': request.json()['hash'],
-                  'group_id': 202494327}
+                  'group_id': ID_GROUP}
         self.data = self.post.photos.saveWallPhoto(**params)
 
     def send_post(self, user_id: int, count: int) -> None:
         params = {
-            'owner_id': '-' + '202494327',
+            'owner_id': '-' + ID_GROUP,
             'count': count
         }
         posts = self.post.wall.get(**params)['items'][:count]
         for post in posts:
-            self.send_message(user_id, '', f"wall-{202494327}_{post['id']}")
+            self.send_message(user_id, '', f"wall-{ID_GROUP}_{post['id']}")
 
     def send_message(self, user_id, message, attachment: str = '') -> None:
         if user_id == MY_ID:
@@ -89,14 +87,7 @@ class LocalBot:
     def push_post(self) -> None:
         for post in get_no_push_posts():
             try:
-                post_url = ''
-                if 'habr' in post[6]:
-                    post_url = 'https://habr.com/ru/news/t/'
-                elif '3dnews' in post[6]:
-                    post_url = 'https://3dnews.ru/'
-                message = f'{post[1]}\n\n{post[2]}'
-                if post_url != '':
-                    message += f'\n\nОригинальная статья: {post_url}/{post[0]}'
+                message = f'{post[1]}\n\n{post[2]}\n\nОригинальная статья: {post[6]}'
                 photos = ''
                 if post[6]:
                     for url in post[6].split('\n'):
@@ -108,7 +99,7 @@ class LocalBot:
                             os.remove('../posts/' + url.split('/')[-1])
                 params = {
                     'message': message,
-                    'owner_id': '-' + '202494327',
+                    'owner_id': '-' + ID_GROUP,
                     'from_group': '1',
                     'attachments': photos[:-1]
                 }

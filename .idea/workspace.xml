@@ -20,14 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44ceb8bf-c9af-4cc1-b1e0-c8801ec7aa3b" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vk_bot/bot.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.ignore" beforeDir="false" afterPath="$PROJECT_DIR$/.ignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vk_bot/server_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/vk_bot/server_bot.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,6 +61,11 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PycharmProjects\web_project\vk_bot" />
+    </key>
   </component>
   <component name="RunManager" selected="Flask server.Flask">
     <configuration name="parser" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -130,7 +143,7 @@
       <updated>1614539818003</updated>
       <workItem from="1614539819460" duration="600000" />
       <workItem from="1614605732269" duration="874000" />
-      <workItem from="1614853440555" duration="2502000" />
+      <workItem from="1614853440555" duration="2819000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1614856488199</created>
@@ -146,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614856495166</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update">
+      <created>1614856744088</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1614856744088</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,10 +193,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="736" y="376" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614856455015" />
-    <state x="1011" y="468" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1614856548338">
+    <state x="1011" y="468" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1614856695023">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="1011" y="468" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614856548338" />
+    <state x="1011" y="468" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614856695023" />
     <state x="1061" y="476" key="FileChooserDialogImpl" timestamp="1614856454488">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
