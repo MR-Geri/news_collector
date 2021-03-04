@@ -54,16 +54,19 @@ class Habr:
                     date = datetime(*map(int, date[0].split('-')), *map(int, date[1][:-1].split(':')))
                     date += timedelta(hours=3)
                     #
-                    with get_base(True) as base:
-                        base.execute("""INSERT INTO article (id, title, intro, date, flag, url)
-                                            VALUES(?, ?, ?, ?, ?, ?)""", (
-                            id_,
-                            title.get_text(strip=True),
-                            intro.get_text(),
-                            date,
-                            False,
-                            '\n'.join(all_img)
-                        ))
+                    if not is_no_base(url):
+                        with get_base(True) as base:
+                            base.execute("""
+                            INSERT INTO article (id, title, intro, date, flag, url, post_url)
+                            VALUES((SELECT id FROM article ORDER BY id DESC LIMIT 1) + 1, ?, ?, ?, ?, ?, ?)""",
+                                         (
+                                             title.get_text(strip=True),
+                                             intro.get_text(),
+                                             date,
+                                             False,
+                                             '\n'.join(all_img),
+                                             url
+                                         ))
                 else:
                     break
             except Exception as e:
@@ -101,17 +104,19 @@ class ThreeNews:
                         if 'https://' in img.get('src'):
                             all_img.append(img.get('src'))
                     #
-                    with get_base(True) as base:
-                        base.execute("""INSERT INTO article (id, title, intro, date, flag, url)
-                                            VALUES(?, ?, ?, ?, ?, ?)""",
-                                     (
-                                         id_,
-                                         title.get_text(strip=True),
-                                         intro.get_text(),
-                                         date,
-                                         False,
-                                         '\n'.join(all_img)
-                                     ))
+                    if not is_no_base(url):
+                        with get_base(True) as base:
+                            base.execute("""
+                            INSERT INTO article (id, title, intro, date, flag, url, post_url)
+                            VALUES((SELECT id FROM article ORDER BY id DESC LIMIT 1) + 1, ?, ?, ?, ?, ?, ?)""",
+                                         (
+                                             title.get_text(strip=True),
+                                             intro.get_text(),
+                                             date,
+                                             False,
+                                             '\n'.join(all_img),
+                                             url
+                                         ))
             except Exception as e:
                 print(ind, e, id_)
 

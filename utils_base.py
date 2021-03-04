@@ -25,6 +25,14 @@ def get_post(id_: int) -> list:
         return base.execute("""SELECT * FROM article WHERE id = ?;""", (id_, )).fetchall()[0]
 
 
+def is_no_base(url: str) -> bool:
+    with get_base() as base:
+        posts = base.execute("""SELECT post_url FROM article;""").fetchall()
+        if (url, ) in posts:
+            return True
+    return False
+
+
 def get_no_push_posts() -> list:
     with get_base() as base:
         return base.execute("""SELECT * FROM article WHERE flag = 0;""").fetchall()

@@ -1329,27 +1329,33 @@
       <Position>6</Position>
       <DataType>TEXT|0s</DataType>
     </column>
-    <key id="487" parent="168">
+    <column id="487" parent="168" name="post_url">
+      <Position>7</Position>
+      <DataType>STRING|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <key id="488" parent="168">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="488" parent="169" name="type">
+    <column id="489" parent="169" name="type">
       <Position>1</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="489" parent="169" name="name">
+    <column id="490" parent="169" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="490" parent="169" name="tbl_name">
+    <column id="491" parent="169" name="tbl_name">
       <Position>3</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="491" parent="169" name="rootpage">
+    <column id="492" parent="169" name="rootpage">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="492" parent="169" name="sql">
+    <column id="493" parent="169" name="sql">
       <Position>5</Position>
       <DataType>text|0s</DataType>
     </column>
