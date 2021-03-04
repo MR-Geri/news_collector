@@ -5,15 +5,8 @@
 vk_bot/polls.py,2\2\220e54675abbf36fcc18f26302cc7f8586775755
 B
 vk_bot/button.json,7\b\7b1e889aebc5eac7113e736f4dfd425ee948369e
-:
-
-.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 7
 .ignore,a\b\abd6d38837e90ded015d7ce0f0593287d1ce6b26
->
-vk_bot/bot.env,4\f\4f2805f3b5b059c802f2df39be81cd8703e024a9
-D
-vk_bot/bot_crash.log,8\a\8a893fcc4119c150e38eb70c9a8fb6f4344a48f2
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 B
@@ -46,5 +39,3 @@ O
 templates/test_post_detail.html,d\f\dfe0244cbb413efeb874da642759e6a06e72f751
 =
 bot_crash.log,d\9\d9d60c3c7556e06394d8262e6a8897f0ad33cf17
-D
-vk_bot/server_bot.py,e\a\ea5f5f03b620730f9e665f7d9fc6803dc60b24dd

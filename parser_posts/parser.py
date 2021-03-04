@@ -40,10 +40,9 @@ class Habr:
         for ind, i in enumerate(items):
             try:
                 title = i.find('h2', class_='post__title')
-                id_ = int(title.find('a').get('href').split('/')[-2])
-                if id_ not in get_id():
+                url = title.find('a').get('href')
+                if not is_no_base(url):
                     intro = i.find('div', class_='post__text')
-                    url = title.find('a').get('href')
                     post_soup = BeautifulSoup(get_html(url).text, 'html.parser')
                     all_img = []
                     for img in post_soup.find('div', class_='post__wrapper').find_all('img'):
@@ -54,23 +53,22 @@ class Habr:
                     date = datetime(*map(int, date[0].split('-')), *map(int, date[1][:-1].split(':')))
                     date += timedelta(hours=3)
                     #
-                    if not is_no_base(url):
-                        with get_base(True) as base:
-                            base.execute("""
-                            INSERT INTO article (id, title, intro, date, flag, url, post_url)
-                            VALUES((SELECT id FROM article ORDER BY id DESC LIMIT 1) + 1, ?, ?, ?, ?, ?, ?)""",
-                                         (
-                                             title.get_text(strip=True),
-                                             intro.get_text(),
-                                             date,
-                                             False,
-                                             '\n'.join(all_img),
-                                             url
-                                         ))
+                    with get_base(True) as base:
+                        base.execute("""
+                        INSERT INTO article (id, title, intro, date, flag, url, post_url)
+                        VALUES((SELECT id FROM article ORDER BY id DESC LIMIT 1) + 1, ?, ?, ?, ?, ?, ?)""",
+                                     (
+                                         title.get_text(strip=True),
+                                         intro.get_text(),
+                                         date,
+                                         False,
+                                         '\n'.join(all_img),
+                                         url
+                                     ))
                 else:
                     break
             except Exception as e:
-                print(ind, e, id_)
+                print(ind, e)
 
 
 class ThreeNews:
@@ -90,11 +88,10 @@ class ThreeNews:
         items = soup.find_all('div', class_='article-entry')
         for ind, i in enumerate(items):
             try:
-                id_ = int(i.find('div', class_='cntPrevWrapper').find('a').get('name'))
-                if id_ not in get_id():
-                    title = i.find('a', class_='entry-header')
+                title = i.find('a', class_='entry-header')
+                url = self.url + '/'.join(title.get('href').split('/')[:-1])
+                if not is_no_base(url):
                     intro = i.find('p')
-                    url = self.url + '/'.join(title.get('href').split('/')[:-1])
                     post_soup = BeautifulSoup(get_html(url).text, 'html.parser')
                     # 2021-02-14T14:45:00+03:00
                     date = post_soup.find('span', class_='entry-date').get('content').split('T')
@@ -104,21 +101,20 @@ class ThreeNews:
                         if 'https://' in img.get('src'):
                             all_img.append(img.get('src'))
                     #
-                    if not is_no_base(url):
-                        with get_base(True) as base:
-                            base.execute("""
-                            INSERT INTO article (id, title, intro, date, flag, url, post_url)
-                            VALUES((SELECT id FROM article ORDER BY id DESC LIMIT 1) + 1, ?, ?, ?, ?, ?, ?)""",
-                                         (
-                                             title.get_text(strip=True),
-                                             intro.get_text(),
-                                             date,
-                                             False,
-                                             '\n'.join(all_img),
-                                             url
-                                         ))
+                    with get_base(True) as base:
+                        base.execute("""
+                        INSERT INTO article (id, title, intro, date, flag, url, post_url)
+                        VALUES((SELECT id FROM article ORDER BY id DESC LIMIT 1) + 1, ?, ?, ?, ?, ?, ?)""",
+                                     (
+                                         title.get_text(strip=True),
+                                         intro.get_text(),
+                                         date,
+                                         False,
+                                         '\n'.join(all_img),
+                                         url
+                                     ))
             except Exception as e:
-                print(ind, e, id_)
+                print(ind, e)
 
 
 if __name__ == '__main__':
