@@ -19,14 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44ceb8bf-c9af-4cc1-b1e0-c8801ec7aa3b" name="Default Changelist" comment="update">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9e218d15-ca69-407b-aa1e-1424d24f75d7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/b/db070ab8bdfd9a89f071ceb06fb9239f9fec05c3" beforeDir="false" />
+    <list default="true" id="44ceb8bf-c9af-4cc1-b1e0-c8801ec7aa3b" name="Default Changelist" comment="mm">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/3/e380e104ae7f437f95b46ea9e05c03261590ecc9" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/3/e380e104ae7f437f95b46ea9e05c03261590ecc9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/a/fa8e2b0bbae53a6a3cac2fef3536ffb4eb90f6b4" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/a/fa8e2b0bbae53a6a3cac2fef3536ffb4eb90f6b4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/posts.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/posts.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ignore" beforeDir="false" afterPath="$PROJECT_DIR$/.ignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram_bot/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/telegram_bot/bot.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,6 +175,8 @@
       <workItem from="1614605732269" duration="874000" />
       <workItem from="1614853440555" duration="7593000" />
       <workItem from="1614864538717" duration="609000" />
+      <workItem from="1614873845321" duration="2867000" />
+      <workItem from="1614880587626" duration="613000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1614856488199</created>
@@ -242,10 +244,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1011" y="468" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614856695023" />
-    <state x="1061" y="476" key="FileChooserDialogImpl" timestamp="1614856454488">
+    <state x="1061" y="476" key="FileChooserDialogImpl" timestamp="1614866217985">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="1061" y="476" key="FileChooserDialogImpl/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614856454488" />
+    <state x="1061" y="476" key="FileChooserDialogImpl/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614866217985" />
     <state width="2517" height="289" key="GridCell.Tab.0.bottom" timestamp="1614863626326">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>

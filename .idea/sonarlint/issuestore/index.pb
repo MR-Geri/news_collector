@@ -50,3 +50,5 @@ D
 vk_bot/server_bot.py,e\a\ea5f5f03b620730f9e665f7d9fc6803dc60b24dd
 D
 vk_bot/bot_crash.log,8\a\8a893fcc4119c150e38eb70c9a8fb6f4344a48f2
+C
+telegram_bot/bot.py,e\8\e86b5f2e826349996972c8f7d3b4f4ea671508e1
