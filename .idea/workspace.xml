@@ -19,14 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44ceb8bf-c9af-4cc1-b1e0-c8801ec7aa3b" name="Default Changelist" comment="mm">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/3/e380e104ae7f437f95b46ea9e05c03261590ecc9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e86b5f2e826349996972c8f7d3b4f4ea671508e1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/posts.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/posts.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram_bot/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/telegram_bot/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vk_bot/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/vk_bot/main.py" afterDir="false" />
+    <list default="true" id="44ceb8bf-c9af-4cc1-b1e0-c8801ec7aa3b" name="Default Changelist" comment="update">
+      <change beforePath="$PROJECT_DIR$/parser_posts/parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/parser_posts/parser.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +194,7 @@
       <workItem from="1614864538717" duration="609000" />
       <workItem from="1614873845321" duration="2867000" />
       <workItem from="1614880587626" duration="2900000" />
-      <workItem from="1614957146344" duration="11333000" />
+      <workItem from="1614957146344" duration="12220000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1614856488199</created>
@@ -251,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614883299557</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="update">
+      <created>1614975877486</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1614975877486</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,9 +271,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update" />
     <MESSAGE value="mm" />
-    <option name="LAST_COMMIT_MESSAGE" value="mm" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="WindowStateProjectService">
     <state x="736" y="376" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614857030295">
@@ -287,26 +288,26 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state x="1061" y="476" key="FileChooserDialogImpl/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614866217985" />
-    <state width="2517" height="289" key="GridCell.Tab.0.bottom" timestamp="1614975678074">
+    <state width="2517" height="289" key="GridCell.Tab.0.bottom" timestamp="1614975748930">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2517" height="289" key="GridCell.Tab.0.bottom/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614975678074" />
-    <state width="2517" height="289" key="GridCell.Tab.0.center" timestamp="1614975678074">
+    <state width="2517" height="289" key="GridCell.Tab.0.bottom/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614975748930" />
+    <state width="2517" height="289" key="GridCell.Tab.0.center" timestamp="1614975748930">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2517" height="289" key="GridCell.Tab.0.center/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614975678074" />
-    <state width="2517" height="289" key="GridCell.Tab.0.left" timestamp="1614975678074">
+    <state width="2517" height="289" key="GridCell.Tab.0.center/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614975748930" />
+    <state width="2517" height="289" key="GridCell.Tab.0.left" timestamp="1614975748930">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2517" height="289" key="GridCell.Tab.0.left/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614975678074" />
-    <state width="2517" height="289" key="GridCell.Tab.0.right" timestamp="1614975678074">
+    <state width="2517" height="289" key="GridCell.Tab.0.left/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614975748930" />
+    <state width="2517" height="289" key="GridCell.Tab.0.right" timestamp="1614975748930">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="2517" height="289" key="GridCell.Tab.0.right/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614975678074" />
-    <state x="873" y="450" key="Vcs.Push.Dialog.v2" timestamp="1614881667587">
+    <state width="2517" height="289" key="GridCell.Tab.0.right/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614975748930" />
+    <state x="873" y="450" key="Vcs.Push.Dialog.v2" timestamp="1614975882749">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="873" y="450" key="Vcs.Push.Dialog.v2/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614881667587" />
+    <state x="873" y="450" key="Vcs.Push.Dialog.v2/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1614975882749" />
     <state x="1099" y="631" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1614881669625">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
@@ -314,7 +315,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/web_project$parser.coverage" NAME="parser Coverage Results" MODIFIED="1614975678069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/parser_posts" />
-    <SUITE FILE_PATH="coverage/web_project$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1614975553693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/telegram_bot" />
+    <SUITE FILE_PATH="coverage/web_project$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1614975748925" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/telegram_bot" />
     <SUITE FILE_PATH="coverage/web_project$Flask.coverage" NAME="Flask Coverage Results" MODIFIED="1614856320061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/web_project$main_vk_bot.coverage" NAME="main_vk_bot Coverage Results" MODIFIED="1614860191578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vk_bot" />
   </component>

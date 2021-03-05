@@ -24,7 +24,10 @@ class Habr:
             pages = self.get_page()
             for num in range(1, pages + 1):
                 print(f'habr парсинг {num} страницы из {pages}...')
-                self.create_posts(get_html(f'{self.url}page{num}/').text)
+                try:
+                    self.create_posts(get_html(f'{self.url}page{num}/').text)
+                except Exception as e:
+                    print(e)
         else:
             print(f'{self.html.status_code} ERROR')
 
@@ -79,7 +82,10 @@ class ThreeNews:
     def parse(self) -> None:
         if self.html.status_code == 200:
             for i in range(1, 2):
-                self.create_posts(get_html(f'{self.url}/page-{i}.html').text)
+                try:
+                    self.create_posts(get_html(f'{self.url}/page-{i}.html').text)
+                except Exception as e:
+                    print(e)
         else:
             print(f'{self.html.status_code} ERROR')
 
