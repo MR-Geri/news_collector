@@ -89,7 +89,7 @@ class LocalBot:
                 message = f'{post[1]}\n\n{post[2]}\n\nОригинальная статья: {post[6]}'
                 photos = ''
                 if post[6]:
-                    for url in post[6].split('\n'):
+                    for url in post[5].split('\n'):
                         url = url.rstrip()
                         if url.split('.')[-1] in IMAGE_EXTENSION:
                             self.upload_image(path_file='../posts/', url=url)
@@ -139,7 +139,7 @@ logger.addHandler(f_handler)
 bot = LocalBot()
 
 
-def check():
+def check() -> None:
     while True:
         bot.parse()
         bot.push_post()

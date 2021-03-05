@@ -11,8 +11,6 @@ B
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 B
 vk_bot/settings.py,0\5\0512f8814837f3cb67277cc53365d0c014996933
-E
-vk_bot/main_vk_bot.py,e\3\e380e104ae7f437f95b46ea9e05c03261590ecc9
 F
 parser_posts/parser.py,f\a\fa8e2b0bbae53a6a3cac2fef3536ffb4eb90f6b4
 D
@@ -50,5 +48,3 @@ D
 vk_bot/server_bot.py,e\a\ea5f5f03b620730f9e665f7d9fc6803dc60b24dd
 D
 vk_bot/bot_crash.log,8\a\8a893fcc4119c150e38eb70c9a8fb6f4344a48f2
-C
-telegram_bot/bot.py,e\8\e86b5f2e826349996972c8f7d3b4f4ea671508e1
