@@ -38,6 +38,6 @@ def get_no_push_posts(key: str = 'flag') -> list:
         return base.execute(f"""SELECT * FROM article WHERE {key} = 0;""").fetchall()
 
 
-def set_post_true(id_: int) -> None:
+def set_post_true(id_: int, key: str = 'flag') -> None:
     with get_base(True) as base:
-        base.execute("""UPDATE article SET flag = 1 WHERE id = ?""", (id_, ))
+        base.execute(f"""UPDATE article SET {key} = 1 WHERE id = ?""", (id_, ))
