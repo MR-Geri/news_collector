@@ -33,9 +33,9 @@ def is_no_base(url: str) -> bool:
     return False
 
 
-def get_no_push_posts() -> list:
+def get_no_push_posts(key: str = 'flag') -> list:
     with get_base() as base:
-        return base.execute("""SELECT * FROM article WHERE flag = 0;""").fetchall()
+        return base.execute(f"""SELECT * FROM article WHERE {key} = 0;""").fetchall()
 
 
 def set_post_true(id_: int) -> None:

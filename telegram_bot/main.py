@@ -9,7 +9,7 @@ bot = telebot.TeleBot(TOKEN)
 
 
 def push_post() -> None:
-    for post in get_no_push_posts():
+    for post in get_no_push_posts('teleg_flag'):
         message = f'{post[1]}\n\n{post[2]}\n\nОригинальная статья: {post[6]}'
         files = []
         paths = []
