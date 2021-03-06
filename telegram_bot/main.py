@@ -24,7 +24,7 @@ def push_post() -> None:
                     files.append(open(path, 'rb'))
             bot.send_media_group('@auto_it_news', [telebot.types.InputMediaPhoto(f) for f in files])
             bot.send_message('@auto_it_news', f'{message}', parse_mode='markdown')
-        set_post_true(post[0])
+        set_post_true(post[0], key='teleg_flag')
         for file in files:
             file.close()
         for path in paths:
