@@ -38,4 +38,4 @@ def check() -> None:
 
 
 if __name__ == '__main__':
-    push_post()
+    check()
