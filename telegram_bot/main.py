@@ -13,6 +13,7 @@ def push_post() -> None:
         message = f'{post[1]}\n\n{post[2]}\n\nОригинальная статья: {post[6]}'
         files = []
         paths = []
+        set_post_true(post[0], key='teleg_flag')
         if post[6]:
             for url in post[5].split('\n'):
                 url = url.rstrip()
@@ -22,9 +23,11 @@ def push_post() -> None:
                     with open(path, 'wb') as file:
                         file.write(requests.get(url).content)
                     files.append(open(path, 'rb'))
-            bot.send_media_group('@auto_it_news', [telebot.types.InputMediaPhoto(f) for f in files])
+            try:
+                bot.send_media_group('@auto_it_news', [telebot.types.InputMediaPhoto(f) for f in files])
+            except Exception as e:
+                print(e)
             bot.send_message('@auto_it_news', f'{message}', parse_mode='markdown', disable_web_page_preview=True)
-        set_post_true(post[0], key='teleg_flag')
         for file in files:
             file.close()
         for path in paths:
@@ -33,7 +36,10 @@ def push_post() -> None:
 
 def check() -> None:
     while True:
-        push_post()
+        try:
+            push_post()
+        except Exception as e:
+            print(e)
         time.sleep(TIME_UPDATE_MINUTES * 60)
 
 
