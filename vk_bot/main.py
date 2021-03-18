@@ -27,7 +27,7 @@ class LocalBot:
         self.long = MyVkLongPoll(self.vk_session)
         #
         self.habr = Habr()
-        self.three_d_news = ThreeNews()
+        self.three_d_news = ThreeNews(set_flag_post=True)
         #
         self.time_update = time.time()
 
@@ -75,7 +75,7 @@ class LocalBot:
             self.send_message(user_id=event.user_id, message='Привет, я бот-информатор)')
         elif event.text.lower() == 'меню':
             self.send_message(event.user_id, 'Меню!')
-        elif 'запость всё' in event.text.lower() or 'запость все' in event.text.lower() and event.user_id == MY_ID:
+        elif ('запость всё' in event.text.lower() or 'запость все' in event.text.lower()) and event.user_id == MY_ID:
             self.push_post()
         elif event.text.lower() == 'покажи последние новости':
             self.send_post(event.user_id, 10)
@@ -113,7 +113,7 @@ class LocalBot:
 
     def parse(self) -> None:
         self.habr.parse()
-        # self.three_d_news.parse()
+        self.three_d_news.parse()
 
     def start(self) -> None:
         try:

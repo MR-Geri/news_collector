@@ -15,9 +15,11 @@ def get_html(url, params=None):
 
 
 class Habr:
-    def __init__(self) -> None:
+    def __init__(self, set_flag_post: bool = False, set_flag_post_telegram: bool = False) -> None:
         self.url = 'https://habr.com/ru/news/'
         self.html = get_html(self.url)
+        self.set_flag_post = set_flag_post
+        self.set_flag_post_telegram = set_flag_post_telegram
 
     def parse(self) -> None:
         if self.html.status_code == 200:
@@ -36,8 +38,7 @@ class Habr:
         block = soup.find('ul', class_='toggle-menu toggle-menu_pagination')
         return int(block.find_all('li', class_='toggle-menu__item toggle-menu__item_pagination')[-2].get_text())
 
-    @staticmethod
-    def create_posts(html) -> None:
+    def create_posts(self, html) -> None:
         soup = BeautifulSoup(html, 'html.parser')
         items = soup.find_all('li', class_='content-list__item_post')
         for ind, i in enumerate(items):
@@ -58,15 +59,16 @@ class Habr:
                     #
                     with get_base(True) as base:
                         base.execute("""
-                        INSERT INTO article (id, title, intro, date, flag, url, post_url)
-                        VALUES((SELECT id FROM article ORDER BY id DESC LIMIT 1) + 1, ?, ?, ?, ?, ?, ?)""",
+                        INSERT INTO article (id, title, intro, date, flag, url, post_url, teleg_flag)
+                        VALUES((SELECT id FROM article ORDER BY id DESC LIMIT 1) + 1, ?, ?, ?, ?, ?, ?, ?)""",
                                      (
                                          title.get_text(strip=True),
                                          intro.get_text(),
                                          date,
-                                         False,
+                                         self.set_flag_post,
                                          '\n'.join(all_img),
-                                         url
+                                         url,
+                                         self.set_flag_post_telegram
                                      ))
                 else:
                     break
@@ -75,13 +77,15 @@ class Habr:
 
 
 class ThreeNews:
-    def __init__(self) -> None:
+    def __init__(self, set_flag_post: bool = False, set_flag_post_telegram: bool = False) -> None:
         self.url = 'https://3dnews.ru/news'
         self.html = get_html(self.url)
+        self.set_flag_post = set_flag_post
+        self.set_flag_post_telegram = set_flag_post_telegram
 
     def parse(self) -> None:
         if self.html.status_code == 200:
-            for i in range(1, 2):
+            for i in range(1, 5):
                 try:
                     self.create_posts(get_html(f'{self.url}/page-{i}.html').text)
                 except Exception as e:
@@ -109,22 +113,23 @@ class ThreeNews:
                     #
                     with get_base(True) as base:
                         base.execute("""
-                        INSERT INTO article (id, title, intro, date, flag, url, post_url)
-                        VALUES((SELECT id FROM article ORDER BY id DESC LIMIT 1) + 1, ?, ?, ?, ?, ?, ?)""",
+                        INSERT INTO article (id, title, intro, date, flag, url, post_url, teleg_flag)
+                        VALUES((SELECT id FROM article ORDER BY id DESC LIMIT 1) + 1, ?, ?, ?, ?, ?, ?, ?)""",
                                      (
                                          title.get_text(strip=True),
                                          intro.get_text(),
                                          date,
-                                         False,
+                                         self.set_flag_post,
                                          '\n'.join(all_img),
-                                         url
+                                         url,
+                                         self.set_flag_post_telegram
                                      ))
             except Exception as e:
                 print(ind, e)
 
 
 if __name__ == '__main__':
-    habr = Habr()
-    three_d_news = ThreeNews()
+    habr = Habr(True, True)
+    three_d_news = ThreeNews(True, True)
     habr.parse()
     three_d_news.parse()

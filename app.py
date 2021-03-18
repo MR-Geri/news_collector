@@ -1,35 +1,30 @@
-import datetime
-
+import account_user
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 
+from models import Article
 from parser_posts.parser import get_html
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.sqlite'
-db = SQLAlchemy(app)
+db = SQLAlchemy(app)  # Важная для работы базы данных строка
+from account_user import login_manager
+login_manager.init_app(app)
+app.register_blueprint(account_user.blueprint)
 
 
 def update_class(line: str) -> str:
+    if 'style=' in line:
+        r_line = line[line.find('style="') + 7:].find('"') + line.find('style="') + 8
+        line = line[:line.find('"') - 6] + line[r_line:]
     if 'class=' in line:
-        r_line = line[line.find('class="') + 7:].find('"') + line.find('class="') + 9
+        r_line = line[line.find('class="') + 7:].find('"') + line.find('class="') + 8
         line = line[:line.find('"') - 6] + line[r_line:]
     if '<img' in line:
-        line = line.replace('<img ', '<img class="rounded mx-auto d-block mt-3 img-fluid " ')
+        line = line.replace('<img ', '<img class="rounded mx-auto d-block mt-3 img-fluid" ')
     return line
-
-
-class Article(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(250), nullable=False)
-    intro = db.Column(db.String(300), nullable=False)
-    date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    flag = db.Column(db.Boolean, default=False)
-    url = db.Column(db.Text, default='')
-
-    def __repr__(self):
-        return '<Article %r>' % self.id
 
 
 @app.route('/')
@@ -73,11 +68,14 @@ def posts():
 
 @app.route('/posts/<int:id_>')
 def post(id_):
-    html = BeautifulSoup(get_html(f'https://habr.com/ru/news/t/{id_}').text, 'html.parser')
-    body = str(html.find('div', class_='post__text')).replace('/>', '>').split('\n')
+    article = Article.query.get(id_)
+    html = BeautifulSoup(get_html(article.post_url).text, 'html.parser')
+    if 'habr.com' in article.post_url:
+        body = str(html.find('div', class_='post__text')).replace('/>', '>').split('\n')
+    else:
+        body = str(html.find('div', class_='js-mediator-article')).replace('/>', '>').split('\n')[1:-1]
     for i in range(len(body)):
         body[i] = update_class(body[i])
-    article = Article.query.get(id_)
     return render_template('test_post_detail.html', article=article).replace('<div></div>', '\n'.join(body))
 
 
