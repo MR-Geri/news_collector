@@ -54,3 +54,18 @@ def register():
 def logout():
     logout_user()
     return redirect("/")
+
+
+@blueprint.route('/personal_account', methods=['POST', 'GET'])
+@login_required
+def personal_account():
+    user = Users.query.filter(Users.id == current_user.id).first()
+    if request.method == 'POST':
+        user.surname = request.form['surname']
+        user.name = request.form['name']
+        user.image = request.form['image']
+        user.mailing = True if request.form.get('check', False) else False
+        db.session.merge(user)
+        db.session.commit()
+    image = user.image if user.image else ''
+    return render_template('personal_account.html', user=user, image=image)

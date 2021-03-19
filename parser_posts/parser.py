@@ -70,6 +70,7 @@ class Habr:
                                          url,
                                          self.set_flag_post_telegram
                                      ))
+                    add_users_post_mailing()
                 else:
                     break
             except Exception as e:
@@ -124,6 +125,7 @@ class ThreeNews:
                                          url,
                                          self.set_flag_post_telegram
                                      ))
+                    add_users_post_mailing()
             except Exception as e:
                 print(ind, e)
 

@@ -29,6 +29,9 @@ class Users(db.Model, UserMixin, SerializerMixin):
     email = db.Column(db.Text, nullable=False)
     password = db.Column(db.Text, nullable=False)
     created_date = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+    image = db.Column(db.Text)
+    mailing = db.Column(db.Boolean, nullable=False, default=False)
+    mailing_posts = db.Column(db.Text)
 
     def __repr__(self):
         return '<User %r>' % self.id
@@ -38,9 +41,3 @@ class Users(db.Model, UserMixin, SerializerMixin):
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
-
-
-class Mailing(db.Model):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.ForeignKey('article.id'))
-    posts = db.Column(db.Text, nullable=False)
