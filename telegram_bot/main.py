@@ -2,6 +2,8 @@ import os
 import time
 import requests
 import telebot
+
+from generation_image.main import Post
 from telegram_bot.setting import *
 from utils_base import get_no_push_posts, set_post_true
 
@@ -15,14 +17,23 @@ def push_post() -> None:
         paths = []
         set_post_true(post[0], key='teleg_flag')
         if post[6]:
-            for url in post[5].split('\n'):
-                url = url.rstrip()
-                path = '../' + url.split('/')[-1]
-                paths.append(path)
-                if url.split('.')[-1] in IMAGE_EXTENSION:
-                    with open(path, 'wb') as file:
-                        file.write(requests.get(url).content)
-                    files.append(open(path, 'rb'))
+            urls = post[5].split('\n')
+            if len(urls) == 1:
+                img_post = Post(int(post[0]))
+                img_post.save()
+                with open(img_post.path, 'rb') as f:
+                    bot.send_media_group('@auto_it_news', [telebot.types.InputMediaPhoto(f)])
+                os.remove(img_post.path)
+                return
+            else:
+                for url in urls:
+                    url = url.rstrip()
+                    path = '../' + url.split('/')[-1]
+                    paths.append(path)
+                    if url.split('.')[-1] in IMAGE_EXTENSION:
+                        with open(path, 'wb') as file:
+                            file.write(requests.get(url).content)
+                        files.append(open(path, 'rb'))
             try:
                 bot.send_media_group('@auto_it_news', [telebot.types.InputMediaPhoto(f) for f in files])
             except Exception as e:

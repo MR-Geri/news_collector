@@ -4,15 +4,13 @@ import os
 import random
 import time
 from threading import Thread
-
+from generation_image.main import Post
 from utils_base import *
 from vk_bot.settings import *
-
 import requests
 import vk_api
 from vk_api.longpoll import VkEventType
 from parser_posts.parser import Habr, ThreeNews
-
 from vk_bot.polls import MyVkLongPoll
 
 
@@ -89,19 +87,33 @@ class LocalBot:
                 message = f'{post[1]}\n\n{post[2]}\n\nОригинальная статья: {post[6]}'
                 photos = ''
                 if post[6]:
-                    for url in post[5].split('\n'):
-                        url = url.rstrip()
-                        if url.split('.')[-1] in IMAGE_EXTENSION:
-                            self.upload_image(path_file='../', url=url)
-                            photo_id = self.data[0]['id']
-                            photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
-                            os.remove('../' + url.split('/')[-1])
-                params = {
-                    'message': message,
-                    'owner_id': '-' + ID_GROUP,
-                    'from_group': '1',
-                    'attachments': photos[:-1]
-                }
+                    urls = post[5].split('\n')
+                    if len(urls) == 1:
+                        img_post = Post(int(post[0]))
+                        img_post.save()
+                        self.upload_image(img_post.path)
+                        photo_id = self.data[0]['id']
+                        photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
+                        os.remove(img_post.path)
+                        params = {
+                            'owner_id': '-' + ID_GROUP,
+                            'from_group': '1',
+                            'attachments': photos[:-1]
+                        }
+                    else:
+                        for url in urls:
+                            url = url.rstrip()
+                            if url.split('.')[-1] in IMAGE_EXTENSION:
+                                self.upload_image(path_file='../', url=url)
+                                photo_id = self.data[0]['id']
+                                photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
+                                os.remove('../' + url.split('/')[-1])
+                        params = {
+                            'message': message,
+                            'owner_id': '-' + ID_GROUP,
+                            'from_group': '1',
+                            'attachments': photos[:-1]
+                        }
                 self.post.wall.post(**params)
                 set_post_true(post[0])
                 flag = True

@@ -54,3 +54,17 @@ G
 telegram_bot/setting.py,8\a\8a9e85fa64cba1008d07f5cc6f8df7a04feb1a66
 >
 vk_bot/main.py,e\8\e8802c939e8539a045bac0e85f39cae16be336f6
+G
+templates/register.html,3\8\38038bbf9a1e82656934071cb8c7c2dc55fe252e
+@
+email_bot/bot.py,d\9\d90ba4beb6170015c3d4bdd26b1078fd9e0fc586
+D
+templates/login.html,f\f\ffdb36cd67c5e5e09ba8e92b13a1dc029c7c4627
+?
+account_user.py,4\d\4dcfcff566ef48c8abfa6af7af4fe9eafa6497f6
+A
+email_bot/main.py,4\b\4bf5792f1ba7830f1d32ecb74c414067468cc72f
+O
+templates/personal_account.html,e\b\eb222a7862058d3b2d48fb41e8188a1a775395e0
+9
+	models.py,8\5\85f64e80ba345158acc186d4505f039d4f21420f
