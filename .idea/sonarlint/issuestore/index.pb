@@ -45,8 +45,6 @@ j
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 D
-vk_bot/server_bot.py,e\a\ea5f5f03b620730f9e665f7d9fc6803dc60b24dd
-D
 vk_bot/bot_crash.log,8\a\8a893fcc4119c150e38eb70c9a8fb6f4344a48f2
 D
 telegram_bot/main.py,d\7\d7cd3e4bdfbe15db53a9aad97c797fdb488c0cfa

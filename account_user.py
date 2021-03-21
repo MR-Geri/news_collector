@@ -68,4 +68,5 @@ def personal_account():
         db.session.merge(user)
         db.session.commit()
     image = user.image if user.image else ''
-    return render_template('personal_account.html', user=user, image=image)
+    checked = 'checked' if bool(user.mailing) else ''
+    return render_template('personal_account.html', user=user, image=image, checked=checked)

@@ -1,0 +1,38 @@
+body {
+    background: #111 !important;
+    color: #f4f4f4 !important;
+}
+
+.header {
+    background: #373737 !important;
+    color: #f4f4f4 !important;
+}
+
+.nav__item {
+    color: #f4f4f4 !important;
+    background: #373737 !important;
+}
+
+.nav__item:hover, .nav__item_active {
+    background: #444 !important;
+}
+
+.alert {
+    background: #333 !important;
+    color: #f4f4f4 !important;
+}
+
+.page-link {
+    background: #444 !important;
+    color: #f4f4f4 !important;
+}
+
+.page-item {
+    background: #444 !important;
+    color: #f4f4f4 !important;
+}
+
+.form-control {
+    background: #333 !important;
+    color: #f4f4f4 !important;
+}

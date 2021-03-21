@@ -1,16 +1,19 @@
 import account_user
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, url_for, request
+from flask_login import current_user
 from flask_sqlalchemy import SQLAlchemy
 
 from models import Article
 from parser_posts.parser import get_html
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.sqlite'
 db = SQLAlchemy(app)  # Важная для работы базы данных строка
 from account_user import login_manager
+
 login_manager.init_app(app)
 app.register_blueprint(account_user.blueprint)
 
@@ -73,7 +76,9 @@ def post(id_):
     if 'habr.com' in article.post_url:
         body = str(html.find('div', class_='post__text')).replace('/>', '>').split('\n')
     else:
-        body = str(html.find('div', class_='js-mediator-article')).replace('/>', '>').split('\n')[1:-1]
+        body = str(html.find('div', class_='js-mediator-article')).replace('/>', '>').split('\n')
+        if body[-1][-6:] == '</div>':
+            body[-1] = body[-1][:-6]
     for i in range(len(body)):
         body[i] = update_class(body[i])
     return render_template('test_post_detail.html', article=article).replace('<div></div>', '\n'.join(body))
