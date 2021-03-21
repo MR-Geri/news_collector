@@ -20,19 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44ceb8bf-c9af-4cc1-b1e0-c8801ec7aa3b" name="Default Changelist" comment="update">
-      <change afterPath="$PROJECT_DIR$/static/dark.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e8802c939e8539a045bac0e85f39cae16be336f6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e8802c939e8539a045bac0e85f39cae16be336f6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/a/ea5f5f03b620730f9e665f7d9fc6803dc60b24dd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/account_user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/posts.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/posts.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/dark.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/personal_account.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/personal_account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/email_bot/bot.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram_bot/setting.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vk_bot/bot.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,7 +265,7 @@
       <workItem from="1616129026209" duration="12160000" />
       <workItem from="1616343091507" duration="243000" />
       <workItem from="1616343343747" duration="148000" />
-      <workItem from="1616343566289" duration="9645000" />
+      <workItem from="1616343566289" duration="9950000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1614856488199</created>
@@ -382,7 +372,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616337025014</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="update">
+      <created>1616354904174</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1616354904174</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -423,6 +420,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state width="2517" height="203" key="GridCell.Tab.0.right/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1616354557240" />
+    <state x="873" y="450" key="Vcs.Push.Dialog.v2" timestamp="1616354910596">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="873" y="450" key="Vcs.Push.Dialog.v2/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1616354910596" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/web_project$parser.coverage" NAME="parser Coverage Results" MODIFIED="1614975678069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/parser_posts" />
