@@ -4,7 +4,7 @@ import smtplib  # Импортируем библиотеку по работе 
 import requests
 
 from utils_base import get_users, get_post, clear_mailing_posts
-from email_bot.bot import *
+from email_bot.settings import *
 import time
 from email.mime.multipart import MIMEMultipart  # Многокомпонентный объект
 from email.mime.text import MIMEText

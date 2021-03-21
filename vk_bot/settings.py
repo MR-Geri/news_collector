@@ -1,3 +1,0 @@
-IMAGE_EXTENSION = ['jpg', 'jpeg', 'png']
-MY_ID = 212360934
-TIME_UPDATE_MINUTES = 10

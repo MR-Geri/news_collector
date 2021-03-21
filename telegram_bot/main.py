@@ -4,7 +4,7 @@ import requests
 import telebot
 
 from generation_image.main import Post
-from telegram_bot.setting import *
+from telegram_bot.settings import *
 from utils_base import get_no_push_posts, set_post_true
 
 bot = telebot.TeleBot(TOKEN)

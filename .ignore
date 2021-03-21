@@ -1,7 +1,6 @@
 .gitignore
 vk_bot/bot_crash.log
 vk_bot/bot.env
-vk_bot/bot.py
 vk_bot/settings.py
-email_bot/bot.py
-telegram_bot/setting.py
+email_bot/settings.py
+telegram_bot/settings.py

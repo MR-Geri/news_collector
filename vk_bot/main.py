@@ -1,4 +1,3 @@
-from vk_bot.bot import *
 import logging
 import os
 import random
