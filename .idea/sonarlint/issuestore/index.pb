@@ -19,8 +19,6 @@ C
 templates/base.html,d\a\da7c237b85a69c00a9ab8c189bf63e22070fcac3
 T
 $.idea/codeStyles/codeStyleConfig.xml,d\d\dd7b3350c29c49497756c7f32c69a3bed18b1cba
-C
-static/css/main.css,1\d\1d911fa3e8e9e880e642b3cfb08a49276784f29a
 D
 templates/index.html,f\6\f69b8ce2e31684ae06f1b3e84821e07e3dfddb2f
 D
@@ -39,8 +37,6 @@ j
 :.idea/dataSources/999c33f5-52f1-45be-9f23-171b816260d2.xml,0\5\0589eabcf49c73524f14e471016d3cae240d2c20
 >
 vk_bot/bot.env,4\f\4f2805f3b5b059c802f2df39be81cd8703e024a9
-=
-vk_bot/bot.py,3\8\3852216ad1f44d1d2d256711a42169447a2e4934
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
@@ -48,14 +44,10 @@ D
 vk_bot/bot_crash.log,8\a\8a893fcc4119c150e38eb70c9a8fb6f4344a48f2
 D
 telegram_bot/main.py,d\7\d7cd3e4bdfbe15db53a9aad97c797fdb488c0cfa
-G
-telegram_bot/setting.py,8\a\8a9e85fa64cba1008d07f5cc6f8df7a04feb1a66
 >
 vk_bot/main.py,e\8\e8802c939e8539a045bac0e85f39cae16be336f6
 G
 templates/register.html,3\8\38038bbf9a1e82656934071cb8c7c2dc55fe252e
-@
-email_bot/bot.py,d\9\d90ba4beb6170015c3d4bdd26b1078fd9e0fc586
 D
 templates/login.html,f\f\ffdb36cd67c5e5e09ba8e92b13a1dc029c7c4627
 ?
@@ -66,3 +58,5 @@ O
 templates/personal_account.html,e\b\eb222a7862058d3b2d48fb41e8188a1a775395e0
 9
 	models.py,8\5\85f64e80ba345158acc186d4505f039d4f21420f
+?
+static/dark.css,c\6\c63737e2957d95535f9d74d1ccc0f93ad634d588
