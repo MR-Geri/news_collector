@@ -23,7 +23,7 @@ class LocalBot:
         self.data = None
         self.long = MyVkLongPoll(self.vk_session)
         #
-        self.habr = Habr()
+        self.habr = Habr(set_flag_post=True, set_flag_post_telegram=True)
         self.three_d_news = ThreeNews(set_flag_post=True)
         #
         self.time_update = time.time()
@@ -33,7 +33,8 @@ class LocalBot:
         if not url:
             photo = open(path_file, 'rb')
         else:
-            path = path_file + url.split('/')[-1]
+            path = url.split('/')[-1].split('.')
+            path = path_file + '_'.join(path[:-1]) + f'.{path[-1]}'
             with open(path, 'wb') as file:
                 file.write(requests.get(url).content)
             photo = open(path, 'rb')
@@ -86,32 +87,39 @@ class LocalBot:
                 message = f'{post[1]}\n\n{post[2]}\n\nОригинальная статья: {post[6]}'
                 photos = ''
                 if post[6]:
-                    urls = post[5].split('\n')
-                    if len(urls) == 1:
-                        img_post = Post(int(post[0]))
-                        img_post.save()
-                        self.upload_image(img_post.path)
-                        photo_id = self.data[0]['id']
-                        photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
-                        os.remove(img_post.path)
-                        params = {
-                            'owner_id': '-' + ID_GROUP,
-                            'from_group': '1',
-                            'attachments': photos[:-1]
-                        }
+                    if post[5]:
+                        urls = post[5].split('\n')
+                        if len(urls) == 1:
+                            img_post = Post(int(post[0]))
+                            img_post.save()
+                            self.upload_image(img_post.path)
+                            photo_id = self.data[0]['id']
+                            photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
+                            os.remove(img_post.path)
+                            params = {
+                                'owner_id': '-' + ID_GROUP,
+                                'from_group': '1',
+                                'attachments': photos[:-1]
+                            }
+                        else:
+                            for url in urls:
+                                url = url.rstrip()
+                                if url.split('.')[-1] in IMAGE_EXTENSION:
+                                    self.upload_image(path_file='../', url=url)
+                                    photo_id = self.data[0]['id']
+                                    photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
+                                    os.remove('../' + url.split('/')[-1])
+                            params = {
+                                'message': message,
+                                'owner_id': '-' + ID_GROUP,
+                                'from_group': '1',
+                                'attachments': photos[:-1]
+                            }
                     else:
-                        for url in urls:
-                            url = url.rstrip()
-                            if url.split('.')[-1] in IMAGE_EXTENSION:
-                                self.upload_image(path_file='../', url=url)
-                                photo_id = self.data[0]['id']
-                                photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
-                                os.remove('../' + url.split('/')[-1])
                         params = {
                             'message': message,
                             'owner_id': '-' + ID_GROUP,
-                            'from_group': '1',
-                            'attachments': photos[:-1]
+                            'from_group': '1'
                         }
                 self.post.wall.post(**params)
                 set_post_true(post[0])
@@ -123,8 +131,9 @@ class LocalBot:
                 self.send_message(MY_ID, 'Пост добавлен!')
 
     def parse(self) -> None:
-        self.habr.parse()
-        self.three_d_news.parse()
+        # self.habr.parse()
+        # self.three_d_news.parse()
+        pass
 
     def start(self) -> None:
         try:

@@ -28,7 +28,8 @@ def push_post() -> None:
             else:
                 for url in urls:
                     url = url.rstrip()
-                    path = '../' + url.split('/')[-1]
+                    path = url.split('/')[-1].split('.')
+                    path = '../' + '_'.join(path[:-1]) + f'.{path[-1]}'
                     paths.append(path)
                     if url.split('.')[-1] in IMAGE_EXTENSION:
                         with open(path, 'wb') as file:
