@@ -19,14 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44ceb8bf-c9af-4cc1-b1e0-c8801ec7aa3b" name="Default Changelist" comment="update">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_03_2021_17_40_[Default_Changelist]/index.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_18_03_2021_17_40_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_03_2021_15_13_[Default_Changelist]/d7cd3e4bdfbe15db53a9aad97c797fdb488c0cfa" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_03_2021_15_13_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/posts.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/posts.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telegram_bot/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/telegram_bot/main.py" afterDir="false" />
+    <list default="true" id="44ceb8bf-c9af-4cc1-b1e0-c8801ec7aa3b" name="Default Changelist" comment="fix">
       <change beforePath="$PROJECT_DIR$/vk_bot/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/vk_bot/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -277,7 +270,7 @@
       <workItem from="1616579425965" duration="4181000" />
       <workItem from="1616654812217" duration="852000" />
       <workItem from="1616674682272" duration="295000" />
-      <workItem from="1616825871747" duration="1022000" />
+      <workItem from="1616825871747" duration="1651000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1614856488199</created>
@@ -405,7 +398,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616655145713</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="fix">
+      <created>1616826903781</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1616826903781</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,7 +427,8 @@
     <MESSAGE value="mm" />
     <MESSAGE value="Аккаунты" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
   </component>
   <component name="WindowStateProjectService">
     <state width="2517" height="194" key="GridCell.Tab.0.bottom" timestamp="1616826876044">
@@ -446,10 +447,10 @@
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
     <state width="2517" height="194" key="GridCell.Tab.0.right/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1616826876043" />
-    <state x="873" y="450" key="Vcs.Push.Dialog.v2" timestamp="1616655147094">
+    <state x="873" y="450" key="Vcs.Push.Dialog.v2" timestamp="1616826906209">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="873" y="450" key="Vcs.Push.Dialog.v2/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1616655147094" />
+    <state x="873" y="450" key="Vcs.Push.Dialog.v2/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1616826906209" />
     <state x="1099" y="631" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1616430411578">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>

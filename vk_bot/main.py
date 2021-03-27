@@ -131,9 +131,8 @@ class LocalBot:
                 self.send_message(MY_ID, 'Пост добавлен!')
 
     def parse(self) -> None:
-        # self.habr.parse()
-        # self.three_d_news.parse()
-        pass
+        self.habr.parse()
+        self.three_d_news.parse()
 
     def start(self) -> None:
         try:
