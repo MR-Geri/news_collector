@@ -89,7 +89,7 @@ class LocalBot:
                 if post[6]:
                     if post[5]:
                         urls = post[5].split('\n')
-                        if len(urls) == 1:
+                        if len(urls) == 1 and len(message) <= 300:
                             img_post = Post(int(post[0]))
                             img_post.save()
                             self.upload_image(img_post.path)

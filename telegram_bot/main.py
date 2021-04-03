@@ -18,7 +18,7 @@ def push_post() -> None:
         set_post_true(post[0], key='teleg_flag')
         if post[6]:
             urls = post[5].split('\n')
-            if len(urls) == 1:
+            if len(urls) == 1 and len(message) <= 300:
                 img_post = Post(int(post[0]))
                 img_post.save()
                 with open(img_post.path, 'rb') as f:
