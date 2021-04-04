@@ -33,8 +33,7 @@ class LocalBot:
         if not url:
             photo = open(path_file, 'rb')
         else:
-            path = url.split('/')[-1].split('.')
-            path = path_file + '_'.join(path[:-1]) + f'.{path[-1]}'
+            path = path_file + url.split('/')[-1]
             with open(path, 'wb') as file:
                 file.write(requests.get(url).content)
             photo = open(path, 'rb')
