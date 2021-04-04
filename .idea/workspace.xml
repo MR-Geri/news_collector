@@ -20,13 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44ceb8bf-c9af-4cc1-b1e0-c8801ec7aa3b" name="Default Changelist" comment="update">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4bf5792f1ba7830f1d32ecb74c414067468cc72f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4bf5792f1ba7830f1d32ecb74c414067468cc72f" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/7/d7cd3e4bdfbe15db53a9aad97c797fdb488c0cfa" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/7/d7cd3e4bdfbe15db53a9aad97c797fdb488c0cfa" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/a/da7c237b85a69c00a9ab8c189bf63e22070fcac3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/a/da7c237b85a69c00a9ab8c189bf63e22070fcac3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e8802c939e8539a045bac0e85f39cae16be336f6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e8802c939e8539a045bac0e85f39cae16be336f6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/posts.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/posts.sqlite" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,9 +32,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Python Script" />
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -83,29 +78,7 @@
       <recent name="D:\PycharmProjects\web_project\static" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main (1)">
-    <configuration name="account_user" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="web_project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="D:\PycharmProjects\web_project\account_user.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.test">
     <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="web_project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -204,6 +177,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="web_project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Flask" type="Python.FlaskServer" nameIsGenerated="true">
       <module name="web_project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -231,17 +226,17 @@
       <item itemvalue="Flask server.Flask" />
       <item itemvalue="Python.main (1)" />
       <item itemvalue="Python.parser" />
-      <item itemvalue="Python.account_user" />
       <item itemvalue="Python.main (2)" />
       <item itemvalue="Python.main (3)" />
+      <item itemvalue="Python.test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.main (3)" />
         <item itemvalue="Python.parser" />
         <item itemvalue="Python.main (2)" />
-        <item itemvalue="Python.account_user" />
       </list>
     </recent_temporary>
   </component>
@@ -411,7 +406,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616826903781</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="update">
+      <created>1617518701097</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1617518701097</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,35 +434,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="mm" />
     <MESSAGE value="Аккаунты" />
-    <MESSAGE value="update" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="2517" height="194" key="GridCell.Tab.0.bottom" timestamp="1616826876044">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state width="2517" height="194" key="GridCell.Tab.0.bottom/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1616826876044" />
-    <state width="2517" height="194" key="GridCell.Tab.0.center" timestamp="1616826876043">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state width="2517" height="194" key="GridCell.Tab.0.center/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1616826876043" />
-    <state width="2517" height="194" key="GridCell.Tab.0.left" timestamp="1616826876043">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state width="2517" height="194" key="GridCell.Tab.0.left/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1616826876043" />
-    <state width="2517" height="194" key="GridCell.Tab.0.right" timestamp="1616826876043">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state width="2517" height="194" key="GridCell.Tab.0.right/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1616826876043" />
-    <state x="873" y="450" key="Vcs.Push.Dialog.v2" timestamp="1616826906209">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="873" y="450" key="Vcs.Push.Dialog.v2/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1616826906209" />
-    <state x="1099" y="631" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1616430411578">
-      <screen x="0" y="0" width="2560" height="1440" />
-    </state>
-    <state x="1099" y="631" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2560.1440/-1080.218.1080.1880@0.0.2560.1440" timestamp="1616430411578" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/web_project$Flask.coverage" NAME="Flask Coverage Results" MODIFIED="1614856320061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
@@ -470,5 +446,6 @@
     <SUITE FILE_PATH="coverage/web_project$app_user.coverage" NAME="app_user Coverage Results" MODIFIED="1616089469754" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/web_project$main_vk_bot.coverage" NAME="main_vk_bot Coverage Results" MODIFIED="1614860191578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vk_bot" />
     <SUITE FILE_PATH="coverage/web_project$main__3_.coverage" NAME="main (3) Coverage Results" MODIFIED="1616826609128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vk_bot" />
+    <SUITE FILE_PATH="coverage/web_project$test.coverage" NAME="test Coverage Results" MODIFIED="1617522438138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
