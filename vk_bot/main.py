@@ -23,7 +23,7 @@ class LocalBot:
         self.data = None
         self.long = MyVkLongPoll(self.vk_session)
         #
-        self.habr = Habr(set_flag_post=True, set_flag_post_telegram=True)
+        self.habr = Habr()
         self.three_d_news = ThreeNews(set_flag_post=True)
         #
         self.time_update = time.time()
@@ -33,7 +33,8 @@ class LocalBot:
         if not url:
             photo = open(path_file, 'rb')
         else:
-            path = path_file + url.split('/')[-1]
+            path = url.split('/')[-1].split('.')
+            path = '../' + '_'.join(path[:-1]) + f'.{path[-1]}'
             with open(path, 'wb') as file:
                 file.write(requests.get(url).content)
             photo = open(path, 'rb')

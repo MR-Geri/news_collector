@@ -16,7 +16,7 @@ def push_post() -> None:
         files = []
         paths = []
         set_post_true(post[0], key='teleg_flag')
-        if post[6]:
+        if post[5]:
             urls = post[5].split('\n')
             if len(urls) == 1 and len(message) <= 300:
                 img_post = Post(int(post[0]))
@@ -27,8 +27,9 @@ def push_post() -> None:
                 return
             else:
                 for url in urls:
-                    url = url.rstrip()
-                    path = '../' + url.split('/')[-1]
+                    url = url.strip()
+                    path = url.split('/')[-1].split('.')
+                    path = '../' + '_'.join(path[:-1]) + f'.{path[-1]}'
                     paths.append(path)
                     if url.split('.')[-1] in IMAGE_EXTENSION:
                         with open(path, 'wb') as file:
@@ -37,7 +38,7 @@ def push_post() -> None:
             try:
                 bot.send_media_group('@auto_it_news', [telebot.types.InputMediaPhoto(f) for f in files])
             except Exception as e:
-                print(e)
+                print('Ошибка send_media_group', e)
             bot.send_message('@auto_it_news', f'{message}', parse_mode='markdown', disable_web_page_preview=True)
         for file in files:
             file.close()
