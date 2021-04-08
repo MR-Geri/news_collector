@@ -23,7 +23,7 @@ class LocalBot:
         self.data = None
         self.long = MyVkLongPoll(self.vk_session)
         #
-        self.habr = Habr(set_flag_post=True, set_flag_post_telegram=True)
+        self.habr = Habr()
         self.three_d_news = ThreeNews(set_flag_post=True)
         #
         self.time_update = time.time()
@@ -89,7 +89,7 @@ class LocalBot:
                 if post[6]:
                     if post[5]:
                         urls = post[5].split('\n')
-                        if len(urls) == 1 and len(message) <= 300:
+                        if len(urls) == 1 and len(message) <= 600:
                             img_post = Post(int(post[0]))
                             img_post.save()
                             self.upload_image(img_post.path)

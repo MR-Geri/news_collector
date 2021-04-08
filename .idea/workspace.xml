@@ -19,15 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44ceb8bf-c9af-4cc1-b1e0-c8801ec7aa3b" name="Default Changelist" comment="fix">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2021_16_48_[Default_Changelist]/d7cd3e4bdfbe15db53a9aad97c797fdb488c0cfa" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2021_16_48_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_03_2021_16_48__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/7/d7cd3e4bdfbe15db53a9aad97c797fdb488c0cfa" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/7/d7cd3e4bdfbe15db53a9aad97c797fdb488c0cfa" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/a/da7c237b85a69c00a9ab8c189bf63e22070fcac3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/a/da7c237b85a69c00a9ab8c189bf63e22070fcac3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e8802c939e8539a045bac0e85f39cae16be336f6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/8/e8802c939e8539a045bac0e85f39cae16be336f6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/b/eb222a7862058d3b2d48fb41e8188a1a775395e0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/b/eb222a7862058d3b2d48fb41e8188a1a775395e0" afterDir="false" />
+    <list default="true" id="44ceb8bf-c9af-4cc1-b1e0-c8801ec7aa3b" name="Default Changelist" comment="fix image">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/posts.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vk_bot/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/vk_bot/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,9 +33,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="Python Script" />
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -64,7 +59,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
     <property name="ignore_missing_gitignore" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../messenger" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -85,7 +80,7 @@
       <recent name="D:\PycharmProjects\web_project\vk_bot" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.qwert">
+  <component name="RunManager" selected="Python.main (3)">
     <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="web_project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -224,19 +219,19 @@
     </configuration>
     <list>
       <item itemvalue="Flask server.Flask" />
+      <item itemvalue="Flask server.Flask (app.py)" />
       <item itemvalue="Python.main (1)" />
       <item itemvalue="Python.parser" />
       <item itemvalue="Python.main (3)" />
-      <item itemvalue="Flask server.Flask (app.py)" />
       <item itemvalue="Python.qwert" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main (3)" />
+        <item itemvalue="Python.parser" />
         <item itemvalue="Python.qwert" />
         <item itemvalue="Flask server.Flask (app.py)" />
         <item itemvalue="Python.main (1)" />
-        <item itemvalue="Python.main (3)" />
-        <item itemvalue="Python.parser" />
       </list>
     </recent_temporary>
   </component>
@@ -278,6 +273,10 @@
       <workItem from="1617302830477" duration="617000" />
       <workItem from="1617306210329" duration="23000" />
       <workItem from="1617458967768" duration="7000" />
+      <workItem from="1617480886604" duration="262000" />
+      <workItem from="1617547188648" duration="11000" />
+      <workItem from="1617824489768" duration="144000" />
+      <workItem from="1617893869738" duration="3037000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1614856488199</created>
@@ -419,7 +418,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616827532850</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="fix image">
+      <created>1617481138166</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1617481138166</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,15 +448,18 @@
     <MESSAGE value="Аккаунты" />
     <MESSAGE value="update" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="fix image" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix image" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/web_project$Flask.coverage" NAME="Flask Coverage Results" MODIFIED="1616674933884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/web_project$main__2_.coverage" NAME="main (2) Coverage Results" MODIFIED="1616149966062" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/email_bot" />
-    <SUITE FILE_PATH="coverage/web_project$parser.coverage" NAME="parser Coverage Results" MODIFIED="1614975678069" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/parser_posts" />
+    <SUITE FILE_PATH="coverage/web_project$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1617480941181" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/web_project$app_user.coverage" NAME="app_user Coverage Results" MODIFIED="1616089469754" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/web_project$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1616826876036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/telegram_bot" />
-    <SUITE FILE_PATH="coverage/web_project$main__3_.coverage" NAME="main (3) Coverage Results" MODIFIED="1616826609128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vk_bot" />
+    <SUITE FILE_PATH="coverage/web_project$parser.coverage" NAME="parser Coverage Results" MODIFIED="1617893891722" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/parser_posts" />
     <SUITE FILE_PATH="coverage/web_project$main_vk_bot.coverage" NAME="main_vk_bot Coverage Results" MODIFIED="1614860191578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vk_bot" />
+    <SUITE FILE_PATH="coverage/web_project$qwert.coverage" NAME="qwert Coverage Results" MODIFIED="1617480968810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/web_project$main__3_.coverage" NAME="main (3) Coverage Results" MODIFIED="1617897786486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vk_bot" />
   </component>
 </project>
