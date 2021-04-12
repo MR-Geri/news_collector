@@ -1,4 +1,7 @@
-# IT новости
+# News collector
+---  
+https://vk.com/auto_it_news  
+https://t.me/auto_it_news
 ---
 1. Для использования VK бота Вам необходимо:  
     - Создать группу с настройками бота
@@ -24,5 +27,4 @@
       - PASSWORD - пароль от почты
       - EMAIL - email адрес
       - IMAGE_EXTENSION - список расширений картинок ['jpg', 'jpeg', 'png']
-
-
+    
