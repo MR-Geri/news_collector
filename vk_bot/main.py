@@ -138,10 +138,11 @@ class LocalBot:
         try:
             while True:
                 for event in self.long.listen():
-                    if event.type == VkEventType.MESSAGE_NEW and event.to_me:
-                        if event.from_user:  # Если написали в ЛС
-                            if event.text:
-                                self.commands(event)
+                    if event.type == VkEventType.MESSAGE_NEW:
+                        if event.from_chat:
+                            print(event.chat_id)
+                        elif event.from_user and event.to_me and event.text:  # Если написали в ЛС
+                            self.commands(event)
         except requests.exceptions.ReadTimeout:
             time.sleep(10)
         except vk_api.AuthError as error_msg:

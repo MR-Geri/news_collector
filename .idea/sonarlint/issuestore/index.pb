@@ -5,12 +5,6 @@
 vk_bot/polls.py,2\2\220e54675abbf36fcc18f26302cc7f8586775755
 B
 vk_bot/button.json,7\b\7b1e889aebc5eac7113e736f4dfd425ee948369e
-7
-.ignore,a\b\abd6d38837e90ded015d7ce0f0593287d1ce6b26
-9
-	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-B
-vk_bot/settings.py,0\5\0512f8814837f3cb67277cc53365d0c014996933
 F
 parser_posts/parser.py,f\a\fa8e2b0bbae53a6a3cac2fef3536ffb4eb90f6b4
 D
@@ -35,17 +29,11 @@ O
 bot_crash.log,d\9\d9d60c3c7556e06394d8262e6a8897f0ad33cf17
 j
 :.idea/dataSources/999c33f5-52f1-45be-9f23-171b816260d2.xml,0\5\0589eabcf49c73524f14e471016d3cae240d2c20
->
-vk_bot/bot.env,4\f\4f2805f3b5b059c802f2df39be81cd8703e024a9
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 D
-vk_bot/bot_crash.log,8\a\8a893fcc4119c150e38eb70c9a8fb6f4344a48f2
-D
 telegram_bot/main.py,d\7\d7cd3e4bdfbe15db53a9aad97c797fdb488c0cfa
->
-vk_bot/main.py,e\8\e8802c939e8539a045bac0e85f39cae16be336f6
 G
 templates/register.html,3\8\38038bbf9a1e82656934071cb8c7c2dc55fe252e
 D
@@ -58,7 +46,13 @@ O
 templates/personal_account.html,e\b\eb222a7862058d3b2d48fb41e8188a1a775395e0
 9
 	models.py,8\5\85f64e80ba345158acc186d4505f039d4f21420f
-H
-telegram_bot/settings.py,d\f\df64e7515a4fdcd5e52b08be41004dd4c4ed26ed
+D
+vk_bot/bot_crash.log,8/a/8a893fcc4119c150e38eb70c9a8fb6f4344a48f2
+>
+vk_bot/bot.env,4/f/4f2805f3b5b059c802f2df39be81cd8703e024a9
 E
-email_bot/settings.py,8\b\8b3e090c0499f6a662e12d77ae78b17e3d1f93d8
+email_bot/settings.py,8/b/8b3e090c0499f6a662e12d77ae78b17e3d1f93d8
+H
+telegram_bot/settings.py,d/f/df64e7515a4fdcd5e52b08be41004dd4c4ed26ed
+7
+.ignore,a/b/abd6d38837e90ded015d7ce0f0593287d1ce6b26
