@@ -3,7 +3,6 @@ import random
 import time
 from generation_image.main import Post
 from utils_base import *
-from vk_bot.main import logger
 from vk_bot.settings import *
 import requests
 import vk_api
@@ -130,8 +129,9 @@ class LocalBot:
                 self.send_message(MY_ID, 'Пост добавлен!')
 
     def parse(self) -> None:
-        self.habr.parse()
-        self.three_d_news.parse()
+        # self.habr.parse()
+        # self.three_d_news.parse()
+        pass
 
     def start(self) -> None:
         try:
@@ -143,5 +143,4 @@ class LocalBot:
         except requests.exceptions.ReadTimeout:
             time.sleep(10)
         except vk_api.AuthError as error_msg:
-            logger.exception('Auth')
             print('Auth ERROR:', error_msg)
