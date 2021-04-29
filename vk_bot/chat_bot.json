@@ -1,0 +1,23 @@
+{
+  "one_time": false,
+  "buttons": [
+    [
+      {
+        "action": {
+          "type": "text",
+          "label": "Включить рассылку"
+        },
+        "color": "primary"
+      }
+    ],
+    [
+      {
+        "action": {
+          "type": "text",
+          "label": "Выключить рассылку"
+        },
+        "color": "secondary"
+      }
+    ]
+  ]
+}
