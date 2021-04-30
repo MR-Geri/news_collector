@@ -15,19 +15,18 @@ class ChatBot:
         self.vk_session = vk_api.VkApi(token=self.token)
         self.vk = self.vk_session.get_api()
         self.long = MyVkBotLongPoll(self.vk_session, ID_GROUP)
-        self.help = 'Для получения информации с вики напишите:\n!Вики {запрос}'
+        self.help = 'Я могу присылать вам все новые новости из группы, просто включите меня!'
 
-    def send_message(self, chat_id, message):
+    def send_message(self, chat_id, message, attachment: str = ''):
         self.vk.messages.send(chat_id=chat_id, random_id=random.getrandbits(32), message=message,
-                              keyboard=open('chat_bot.json', "r", encoding="UTF-8").read())
+                              keyboard=open('chat_bot.json', "r", encoding="UTF-8").read(), attachment=attachment)
 
     def commands(self, event):
         if event.object.text.lower() == '!help' or event.object.text.lower() == '!помощь':
             self.send_message(chat_id=event.chat_id, message=self.help)
         elif 'включить рассылку' in event.object.text.lower():
-            with get_base() as base:
+            with get_base(True) as base:
                 id_ = base.execute("""SELECT * FROM chat_vk WHERE chat_id = ?;""", (event.chat_id,)).fetchall()
-                print(id_)
                 if id_:
                     base.execute("""UPDATE chat_vk SET flag = 1 WHERE chat_id = ?;""", (event.chat_id,))
                 else:
@@ -36,7 +35,7 @@ class ChatBot:
                                  (event.chat_id, 1))
             self.send_message(chat_id=event.chat_id, message='Рассылка включена!')
         elif 'выключить рассылку' in event.object.text.lower():
-            with get_base() as base:
+            with get_base(True) as base:
                 id_ = base.execute("""SELECT * FROM chat_vk WHERE chat_id = ?;""", (event.chat_id,)).fetchall()
                 if id_:
                     base.execute("""UPDATE chat_vk SET flag = 0 WHERE chat_id = ?;""", (event.chat_id,))
