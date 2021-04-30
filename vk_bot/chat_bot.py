@@ -31,7 +31,7 @@ class ChatBot:
                     base.execute("""UPDATE chat_vk SET flag = 1 WHERE chat_id = ?;""", (event.chat_id,))
                 else:
                     base.execute("""INSERT INTO chat_vk (id, chat_id, flag)
-                                    VALUES((SELECT id FROM chat_vk ORDER BY id DESC LIMIT 1) + 1, ?, ?)""",
+                                    VALUES((SELECT id FROM chat_vk ORDER BY id DESC LIMIT 1) + 1, ?, ?);""",
                                  (event.chat_id, 1))
             self.send_message(chat_id=event.chat_id, message='Рассылка включена!')
         elif 'выключить рассылку' in event.object.text.lower():
