@@ -19,9 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44ceb8bf-c9af-4cc1-b1e0-c8801ec7aa3b" name="Default Changelist" comment="update">
-      <change beforePath="$PROJECT_DIR$/vk_bot/chat_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/vk_bot/chat_bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vk_bot/local_bot.py" beforeDir="false" />
+    <list default="true" id="44ceb8bf-c9af-4cc1-b1e0-c8801ec7aa3b" name="Default Changelist" comment="осталось сделать тесты">
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/5/35a7d6b61b4df4af1b67c2c9f1034cc7672ff7c2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/362a7f72-6c88-4ba7-b729-0572efb01331.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/b/fb102a1419d8dd207caea589bafba53d0c8b3e5f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/posts.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/posts.sqlite" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +97,7 @@
       <recent name="D:\PycharmProjects\web_project\static" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main (3)">
+  <component name="RunManager" selected="Python.parser">
     <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="web_project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -255,10 +261,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.parser" />
         <item itemvalue="Python.main (3)" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.main (1)" />
-        <item itemvalue="Python.parser" />
         <item itemvalue="Python.main (2)" />
       </list>
     </recent_temporary>
@@ -300,6 +306,7 @@
       <workItem from="1619556378581" duration="1472000" />
       <workItem from="1619758928605" duration="402000" />
       <workItem from="1619766718318" duration="845000" />
+      <workItem from="1619845971030" duration="715000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1614856488199</created>
@@ -467,16 +474,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/web_project$Flask.coverage" NAME="Flask Coverage Results" MODIFIED="1616674933884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/web_project$main.coverage" NAME="main Coverage Results" MODIFIED="1619557705691" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vk_bot" />
-    <SUITE FILE_PATH="coverage/web_project$main__2_.coverage" NAME="main (2) Coverage Results" MODIFIED="1616149966062" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/email_bot" />
-    <SUITE FILE_PATH="coverage/web_project$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1618065361274" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/web_project$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1617523920427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/telegram_bot" />
+    <SUITE FILE_PATH="coverage/web_project$parser.coverage" NAME="parser Coverage Results" MODIFIED="1619820000378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/parser_posts" />
     <SUITE FILE_PATH="coverage/web_project$app_user.coverage" NAME="app_user Coverage Results" MODIFIED="1616089469754" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/web_project$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1616826876036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/telegram_bot" />
-    <SUITE FILE_PATH="coverage/web_project$parser.coverage" NAME="parser Coverage Results" MODIFIED="1617893891722" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/parser_posts" />
-    <SUITE FILE_PATH="coverage/web_project$main_vk_bot.coverage" NAME="main_vk_bot Coverage Results" MODIFIED="1614860191578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vk_bot" />
-    <SUITE FILE_PATH="coverage/web_project$qwert.coverage" NAME="qwert Coverage Results" MODIFIED="1617480968810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/web_project$test.coverage" NAME="test Coverage Results" MODIFIED="1617522438138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/web_project$main__3_.coverage" NAME="main (3) Coverage Results" MODIFIED="1619718503637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vk_bot" />
+    <SUITE FILE_PATH="coverage/web_project$main__3_.coverage" NAME="main (3) Coverage Results" MODIFIED="1619767003500" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vk_bot" />
+    <SUITE FILE_PATH="coverage/web_project$main.coverage" NAME="main Coverage Results" MODIFIED="1619557705691" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vk_bot" />
+    <SUITE FILE_PATH="coverage/web_project$Flask.coverage" NAME="Flask Coverage Results" MODIFIED="1614856320061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/web_project$main__2_.coverage" NAME="main (2) Coverage Results" MODIFIED="1616149966062" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/email_bot" />
+    <SUITE FILE_PATH="coverage/web_project$main_vk_bot.coverage" NAME="main_vk_bot Coverage Results" MODIFIED="1614860191578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/vk_bot" />
   </component>
 </project>

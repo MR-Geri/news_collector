@@ -48,5 +48,9 @@ H
 telegram_bot/settings.py,d/f/df64e7515a4fdcd5e52b08be41004dd4c4ed26ed
 7
 .ignore,a/b/abd6d38837e90ded015d7ce0f0593287d1ce6b26
+j
+:.idea/dataSources/362a7f72-6c88-4ba7-b729-0572efb01331.xml,f/b/fb102a1419d8dd207caea589bafba53d0c8b3e5f
 =
 utils_base.py,3/5/35a7d6b61b4df4af1b67c2c9f1034cc7672ff7c2
+C
+vk_bot/local_bot.py,c/7/c7d2c0f89ea351ecf868482fd196dc5aab4fffc5
