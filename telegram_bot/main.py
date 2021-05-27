@@ -44,6 +44,7 @@ def push_post() -> None:
             file.close()
         for path in paths:
             os.remove(path)
+        time.sleep(1)
 
 
 def check() -> None:

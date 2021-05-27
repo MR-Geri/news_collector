@@ -23,8 +23,10 @@ class LocalBot:
         self.data = None
         self.long = MyVkLongPoll(self.vk_session)
         #
-        self.habr = Habr()
-        self.three_d_news = ThreeNews(set_flag_post=True)
+        # self.habr = Habr()
+        # self.three_d_news = ThreeNews(set_flag_post=True)
+        self.habr = Habr(True, True)
+        self.three_d_news = ThreeNews(True, True)
         #
         self.time_update = time.time()
 
@@ -97,6 +99,7 @@ class LocalBot:
                             photos += f'photo{self.data[0]["owner_id"]}_{photo_id},'
                             os.remove(img_post.path)
                             params = {
+                                'message': f'{post[6]}',
                                 'owner_id': '-' + ID_GROUP,
                                 'from_group': '1',
                                 'attachments': photos[:-1]
