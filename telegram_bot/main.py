@@ -21,6 +21,7 @@ def push_post() -> None:
             if len(urls) == 1 and len(message) <= 600:
                 img_post = Post(int(post[0]))
                 img_post.save()
+                bot.send_message('@auto_it_news', f'{post[6]}', parse_mode='markdown', disable_web_page_preview=True)
                 with open(img_post.path, 'rb') as f:
                     bot.send_media_group('@auto_it_news', [telebot.types.InputMediaPhoto(f)])
                 os.remove(img_post.path)
