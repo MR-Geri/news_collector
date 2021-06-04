@@ -21,9 +21,10 @@ def push_post() -> None:
             if len(urls) == 1 and len(message) <= 600:
                 img_post = Post(int(post[0]))
                 img_post.save()
-                bot.send_message('@auto_it_news', f'{post[6]}', parse_mode='markdown', disable_web_page_preview=True)
                 with open(img_post.path, 'rb') as f:
-                    bot.send_media_group('@auto_it_news', [telebot.types.InputMediaPhoto(f)])
+                    bot.send_media_group('@auto_it_news', [telebot.types.InputMediaPhoto(
+                        f, caption=f'{post[6]}', parse_mode='markdown'
+                    )])
                 os.remove(img_post.path)
                 return
             else:
@@ -37,15 +38,18 @@ def push_post() -> None:
                             file.write(requests.get(url).content)
                         files.append(open(path, 'rb'))
             try:
-                bot.send_media_group('@auto_it_news', [telebot.types.InputMediaPhoto(f) for f in files])
+                bot.send_media_group(
+                    '@auto_it_news',
+                    [telebot.types.InputMediaPhoto(files[0], f'{message}', parse_mode='markdown')] +
+                    [telebot.types.InputMediaPhoto(f) for f in files[1:]]
+                )
             except Exception as e:
                 print(e)
-            bot.send_message('@auto_it_news', f'{message}', parse_mode='markdown', disable_web_page_preview=True)
         for file in files:
             file.close()
         for path in paths:
             os.remove(path)
-        time.sleep(1)
+        time.sleep(5)
 
 
 def check() -> None:

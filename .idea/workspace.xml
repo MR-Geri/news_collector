@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44ceb8bf-c9af-4cc1-b1e0-c8801ec7aa3b" name="Default Changelist" comment="фикс бага с неотправленными сообщениями в ТГ&#10;добавление ссылки на пост-картинку" />
+    <list default="true" id="44ceb8bf-c9af-4cc1-b1e0-c8801ec7aa3b" name="Default Changelist" comment="фикс бага с неотправленными сообщениями в ТГ&#10;добавление ссылки на пост-картинку">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/telegram_bot/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/telegram_bot/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,7 +68,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
     <property name="ignore_missing_gitignore" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../school_assignments" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -301,7 +304,8 @@
       <workItem from="1620939258459" duration="1236000" />
       <workItem from="1621244676460" duration="70000" />
       <workItem from="1622144229250" duration="698000" />
-      <workItem from="1622147629478" duration="316000" />
+      <workItem from="1622147629478" duration="1068000" />
+      <workItem from="1622819802952" duration="1536000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <created>1614856488199</created>
@@ -450,7 +454,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622147941733</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="фикс бага с неотправленными сообщениями в ТГ&#10;добавление ссылки на пост-картинку">
+      <created>1622148048472</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1622148048472</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
