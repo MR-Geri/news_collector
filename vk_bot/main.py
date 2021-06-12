@@ -23,10 +23,8 @@ class LocalBot:
         self.data = None
         self.long = MyVkLongPoll(self.vk_session)
         #
-        # self.habr = Habr()
-        # self.three_d_news = ThreeNews(set_flag_post=True)
-        self.habr = Habr(True, True)
-        self.three_d_news = ThreeNews(True, True)
+        self.habr = Habr()
+        self.three_d_news = ThreeNews(set_flag_post=True)
         #
         self.time_update = time.time()
 

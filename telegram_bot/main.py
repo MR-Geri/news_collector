@@ -49,7 +49,7 @@ def push_post() -> None:
             file.close()
         for path in paths:
             os.remove(path)
-        time.sleep(5)
+        time.sleep(20)
 
 
 def check() -> None:
