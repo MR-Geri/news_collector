@@ -24,7 +24,7 @@ class Habr:
 
     def parse(self) -> None:
         if self.html.status_code == 200:
-            pages = 8
+            pages = 2
             for num in range(1, pages + 1):
                 print(f'habr парсинг {num} страницы из {pages}...')
                 try:

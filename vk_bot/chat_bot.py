@@ -22,9 +22,9 @@ class ChatBot:
                               keyboard=open('chat_bot.json', "r", encoding="UTF-8").read(), attachment=attachment)
 
     def commands(self, event):
-        if event.object.text.lower() == '!help' or event.object.text.lower() == '!помощь':
+        if event.message.text.lower() == '!help' or event.message.text.lower() == '!помощь':
             self.send_message(chat_id=event.chat_id, message=self.help)
-        elif 'включить рассылку' in event.object.text.lower():
+        elif 'включить рассылку' in event.message.text.lower():
             with get_base(True) as base:
                 id_ = base.execute("""SELECT * FROM chat_vk WHERE chat_id = ?;""", (event.chat_id,)).fetchall()
                 if id_:
@@ -34,7 +34,7 @@ class ChatBot:
                                     VALUES((SELECT id FROM chat_vk ORDER BY id DESC LIMIT 1) + 1, ?, ?);""",
                                  (event.chat_id, 1))
             self.send_message(chat_id=event.chat_id, message='Рассылка включена!')
-        elif 'выключить рассылку' in event.object.text.lower():
+        elif 'выключить рассылку' in event.message.text.lower():
             with get_base(True) as base:
                 id_ = base.execute("""SELECT * FROM chat_vk WHERE chat_id = ?;""", (event.chat_id,)).fetchall()
                 if id_:
@@ -48,10 +48,15 @@ class ChatBot:
             while True:
                 for event in self.long.listen():
                     if event.type == VkBotEventType.MESSAGE_NEW:
-                        if event.object.peer_id != event.object.from_id:
-                            if event.object.text:
+                        if event.message.peer_id != event.message.from_id:
+                            if event.message.text:
                                 self.commands(event)
         except requests.exceptions.ReadTimeout:
             time.sleep(10)
         except vk_api.AuthError as error_msg:
             print('ERROR:', error_msg)
+
+
+if __name__ == '__main__':
+    bot = ChatBot()
+    bot.start()
