@@ -24,8 +24,6 @@ O
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-D
-telegram_bot/main.py,d\7\d7cd3e4bdfbe15db53a9aad97c797fdb488c0cfa
 G
 templates/register.html,3\8\38038bbf9a1e82656934071cb8c7c2dc55fe252e
 D
@@ -48,5 +46,3 @@ H
 telegram_bot/settings.py,d/f/df64e7515a4fdcd5e52b08be41004dd4c4ed26ed
 7
 .ignore,a/b/abd6d38837e90ded015d7ce0f0593287d1ce6b26
-=
-utils_base.py,3/5/35a7d6b61b4df4af1b67c2c9f1034cc7672ff7c2

@@ -16,45 +16,41 @@ def get_html(url, params=None):
 
 class Habr:
     def __init__(self, set_flag_post: bool = False, set_flag_post_telegram: bool = False) -> None:
-        self.url = 'https://habr.com/ru/news/'
+        self.url = 'https://habr.com/ru/news'
+        self.dom = 'https://habr.com'
         self.html = get_html(self.url)
         self.set_flag_post = set_flag_post
         self.set_flag_post_telegram = set_flag_post_telegram
 
     def parse(self) -> None:
         if self.html.status_code == 200:
-            pages = self.get_page()
+            pages = 8
             for num in range(1, pages + 1):
                 print(f'habr парсинг {num} страницы из {pages}...')
                 try:
-                    self.create_posts(get_html(f'{self.url}page{num}/').text)
+                    self.create_posts(get_html(f'{self.url}/page{num}/').text)
                 except Exception as e:
                     print(e)
         else:
             print(f'{self.html.status_code} ERROR')
 
-    def get_page(self) -> int:
-        soup = BeautifulSoup(self.html.text, 'html.parser')
-        block = soup.find('ul', class_='toggle-menu toggle-menu_pagination')
-        return int(block.find_all('li', class_='toggle-menu__item toggle-menu__item_pagination')[-2].get_text())
-
     def create_posts(self, html) -> None:
         soup = BeautifulSoup(html, 'html.parser')
-        items = soup.find_all('li', class_='content-list__item_post')
+        items = soup.find_all('article', class_='tm-articles-list__item')
         for ind, i in enumerate(items):
             try:
-                title = i.find('h2', class_='post__title')
-                url = title.find('a').get('href')
+                title = i.find('h2', class_='tm-article-snippet__title')
+                url = self.dom + title.find('a').get('href')
                 if not is_no_base(url):
-                    intro = i.find('div', class_='post__text')
+                    intro = i.find('div', class_='article-formatted-body')
                     post_soup = BeautifulSoup(get_html(url).text, 'html.parser')
                     all_img = []
-                    for img in post_soup.find('div', class_='post__wrapper').find_all('img'):
+                    for img in post_soup.find('div', class_='tm-article-body').find_all('img'):
                         if 'https://' in img.get('src'):
                             all_img.append(img.get('src'))
                     # 2021-02-14T13:11Z
-                    date = post_soup.find('span', class_='post__time').get('data-time_published').split('T')
-                    date = datetime(*map(int, date[0].split('-')), *map(int, date[1][:-1].split(':')))
+                    date = post_soup.find('time').get('datetime').split('T')
+                    date = datetime(*map(int, date[0].split('-')), *map(int, date[1][:-5].split(':')))
                     date += timedelta(hours=3)
                     #
                     with get_base(True) as base:
