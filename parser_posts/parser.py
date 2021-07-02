@@ -36,21 +36,21 @@ class Habr:
 
     def create_posts(self, html) -> None:
         soup = BeautifulSoup(html, 'html.parser')
-        items = soup.find_all('article', class_='tm-articles-list__item')
+        items = soup.find_all('article', class_='post_preview')
         for ind, i in enumerate(items):
             try:
-                title = i.find('h2', class_='tm-article-snippet__title')
-                url = self.dom + title.find('a').get('href')
+                title = i.find('h2', class_='post__title')
+                url = title.find('a').get('href')
                 if not is_no_base(url):
-                    intro = i.find('div', class_='article-formatted-body')
+                    intro = i.find('div', class_='post__text')
                     post_soup = BeautifulSoup(get_html(url).text, 'html.parser')
                     all_img = []
-                    for img in post_soup.find('div', class_='tm-article-body').find_all('img'):
+                    for img in post_soup.find('div', class_='post__text').find_all('img'):
                         if 'https://' in img.get('src'):
                             all_img.append(img.get('src'))
                     # 2021-02-14T13:11Z
-                    date = post_soup.find('time').get('datetime').split('T')
-                    date = datetime(*map(int, date[0].split('-')), *map(int, date[1][:-5].split(':')))
+                    date = post_soup.find('span', class_='post__time').get('data-time_published').split('T')
+                    date = datetime(*map(int, date[0].split('-')), *map(int, date[1][:-1].split(':')))
                     date += timedelta(hours=3)
                     #
                     with get_base(True) as base:
@@ -130,4 +130,4 @@ if __name__ == '__main__':
     habr = Habr(True, True)
     three_d_news = ThreeNews(True, True)
     habr.parse()
-    three_d_news.parse()
+    # three_d_news.parse()
